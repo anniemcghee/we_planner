@@ -34,8 +34,8 @@ module.exports.routes = {
 
   '/': "PagesController.index",
 
-  'post /api/user/:userid/tasks':"TaskController.addTask",
-  'get /api/user/:userid/tasks':"TaskController.getTasks",
+  'post /api/user/:id/tasks':"TaskController.addTask",
+  'get /api/user/:id/tasks':"TaskController.getTasks",
 
   'post /api/auth':"AuthController.login",
 

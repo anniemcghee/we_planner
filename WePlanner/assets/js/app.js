@@ -1,4 +1,4 @@
-var app = angular.module('WePlanner',['ngRoute','ui.bootstrap'])
+var app = angular.module('WePlanner',['ngRoute','ui.bootstrap','ngTagsInput','pippTimelineDirectives'])
 
 app.config(['$routeProvider','$locationProvider', function($routeProvider, $locationProvider) {
   // console.log('config');
@@ -18,10 +18,10 @@ app.config(['$routeProvider','$locationProvider', function($routeProvider, $loca
     //   templateUrl:'/views/show.html',
     //   controller:'ShowCtrl'
     // })
-    // .when('/about',{
-    //   templateUrl:'/views/about.html',
-    //   controller:'StaticCtrl'
-    // })
+    .when('/about',{
+      templateUrl:'/views/about.html',
+      controller:'StaticCtrl'
+    })
     // .when('/faq',{
     //   templateUrl:'/views/faq.html',
     //   controller:'StaticCtrl'

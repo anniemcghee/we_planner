@@ -18,6 +18,11 @@ app.controller('MainNavCtrl',['$scope','$location','$modal','UserService',functi
   //location is directly related to ngRoute that we loaded into our app - it helps get the url - or can set it with path('/whatever')
   }
 
+  // $scope.showTimeline = function(){
+  //   //the timeline will magically render on homepage? not a modal.
+  //   render '/';
+  // }
+
   $scope.showLogin = function(){
     // alert('Here comes the modal');
     $modal.open({
@@ -31,6 +36,13 @@ app.controller('MainNavCtrl',['$scope','$location','$modal','UserService',functi
     $modal.open({
       templateUrl:'/views/signupModal.html',
       controller:'AuthModalCtrl'
+    })
+  };
+
+  $scope.showNew = function(){
+    $modal.open({
+      templateUrl:'/views/newTaskModal.html',
+      controller:'NewTaskModalCtrl'
     })
   };
 

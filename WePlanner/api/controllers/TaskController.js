@@ -7,23 +7,15 @@
 
 module.exports = {
 
-  create:function(req,res){
-    var taskData = {
-      //below is where you add the req.body.fields from the form
-      // title:req.body.title,
-      // body:req.body.body,
-      owner:req.session.user.id
-    };
-    Task.create(taskData).exec(function(err, post){
-      if(err) res.send(400,err);
-      res.send(post);
-    })
-  },
   addTask:function(req,res){
     var taskData = {
       //below is where you add the req.body.fields from the form
-      // body:req.body.body,
-      // post:req.params.postId,
+      type:req.body.type,
+      dt:req.body.dt,
+      user1:req.body.user1,
+      user2:req.body.user2,
+      what:req.body.what,
+      tags:req.body.tags,
       owner:req.session.user.id
     };
     Task.create(taskData).then(function(task){

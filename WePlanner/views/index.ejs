@@ -27,8 +27,9 @@
         <li ng-show="currentUser" class="dropdown" dropdown>
           <a href="#" dropdown-toggle class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">The {{currentUser.lastName}} Wedding<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="#">View Timeline</a></li>
-            <li><a href="#">Add New Task</a></li>
+            <li><a ng-click="showTimeline()">View Timeline</a></li>
+            <!-- link to add new task modal -->
+            <li><a ng-click="showNew()">Add New Task</a></li>
             <li><a href="#">Settings</a></li>
             <li class="divider"></li>
             <li><a href="#" ng-click="logout()">Logout</a></li>
@@ -43,6 +44,8 @@
   <div class="container">
 
     <ng-view></ng-view>
+
+<!--     here is where we'll do an ng-if current user then show their timeline -->
 
   </div>
 

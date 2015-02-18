@@ -1,7 +1,7 @@
 app.controller('AuthModalCtrl', ['$scope','$http','$modalInstance','AlertService', 'UserService', function($scope, $http, $modalInstance, AlertService, UserService){
 
   $scope.login = function(){
-
+    // alert('login function')
     UserService.login($scope.email,$scope.password,function(err,data){
       if(err){
         alert(err);

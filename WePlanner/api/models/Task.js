@@ -8,18 +8,27 @@
 module.exports = {
 
   attributes: {
-    date: {
-      type: 'string',
+    dt: {
+      type:'date',
       required:true
+    },
+    user1: {
+      type:'boolean',
+    },
+    user2: {
+      type:'boolean',
     },
     type: {
       type:'string',
       enum:['Milestone','Appointment','Deadline'],
       required:true
     },
-    body: {
+    what: {
       type:'text',
       required:true
+    },
+    tags: {
+      type:'string'
     },
     //associations
     owner: {
