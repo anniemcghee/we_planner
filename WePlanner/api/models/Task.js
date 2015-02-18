@@ -28,7 +28,7 @@ module.exports = {
       required:true
     },
     tags: {
-      type:'string'
+      type:'array'
     },
     //associations
     owner: {

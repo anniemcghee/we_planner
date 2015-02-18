@@ -10,10 +10,10 @@ app.config(['$routeProvider','$locationProvider', function($routeProvider, $loca
       templateUrl:'/views/home.html',
       controller:'HomeCtrl'
     })
-    // .when('/contact/new', {
-    //   templateUrl:'/views/new.html',
-    //   controller:'NewCtrl'
-    // })
+    .when('/dashboard', {
+      templateUrl:'/views/dashboard.html',
+      controller:'DashboardCtrl'
+    })
     // .when('/contact/:id',{
     //   templateUrl:'/views/show.html',
     //   controller:'ShowCtrl'
@@ -27,4 +27,13 @@ app.config(['$routeProvider','$locationProvider', function($routeProvider, $loca
     //   controller:'StaticCtrl'
     // })
 
-}])
+}]);
+
+//app.run userservice to call check .check
+app.run(['UserService',function(UserService){
+
+  UserService.check(function(err,data){
+    console.log('check',err,data)
+  })
+
+}]);

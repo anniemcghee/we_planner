@@ -9,7 +9,7 @@
       <div class="input-group-addon">
 
           <input type="radio" ng-model="type" value="Milestone">  Milestone
-          <input type="radio" ng-model="type" ng-value="Deadline"> Deadline
+          <input type="radio" ng-model="type" value="Deadline"> Deadline
           <input type="radio" ng-model="type" value="Appointment"> Appointment
 
       </div>
@@ -37,10 +37,10 @@
         <div class="form-group">
           <label>Who</label>
           <!-- icons for person 1 or person 2 or both-->
-          <div ng-model="who">
-              <input type="checkbox" value="user1" ng-true-value="true"> User 1
-              <input type="checkbox" value="user2" ng-true-value="true"> User 2 <br/>
-        </div>
+          <div>
+              <input type="checkbox" ng-model="user1" ng-false-value="false" value="user1"> User 1
+              <input type="checkbox" ng-model="user2" ng-false-value="false" value="user2"> User 2 <br/>
+          </div>
           <!-- <input ng-model="who" type="text" class="form-control" required> -->
         </div>
         <div class="form-group">

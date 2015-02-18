@@ -26,8 +26,8 @@ module.exports = {
     })
   },
   getTasks:function(req,res){
-    Task.find({where:{task:req.params.userId}})
-    .populate('owner').then(function(tasks){
+    Task.find({where:{owner:req.params.id}})
+    .then(function(tasks){
       res.send(tasks);
     }).catch(function(err){
       res.send(400, err);
