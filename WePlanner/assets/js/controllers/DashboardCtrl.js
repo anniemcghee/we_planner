@@ -1,12 +1,11 @@
-app.controller('DashboardCtrl',['$scope','$http','$modal', 'AlertService','UserService', '$location',function($scope, $http, $modal, AlertService, UserService, $location) {
+app.controller('DashboardCtrl',['$scope','$http','$modal', 'AlertService','UserService', '$location', 'TimelineService',function($scope, $http, $modal, AlertService, UserService, $location, TimelineService) {
 
 $scope.UserService = UserService;
 
 $scope.currentUser = UserService.currentUser
 
-$scope.data = {};
-
 console.log($scope.currentUser.id)
+
 //get the current user CHECK
 
 //get the array of tasks associated to that user CHECK
@@ -20,7 +19,22 @@ var makeTimeline = function() {
     $http.get('/api/user/'+$scope.currentUser.id+'/tasks')
       .success(function(data){
         $scope.tasks = data;
-        console.log($scope.tasks);
+        // console.log($scope.tasks);
+
+        $scope.dates = [];
+
+        for (i = 0; i < $scope.tasks.length; i++) {
+          $scope.dates[i] = {
+            "startDate":$scope.tasks[i].dt,
+            "endDate":$scope.tasks[i].dt,
+            "headline":$scope.tasks[i].what,
+            "text":"Person",
+            "tag":$scope.tasks[i].tags
+          }
+        }
+
+        console.log('HEY');
+        // console.log($scope.dates);
 
           $scope.data = {
 
@@ -30,17 +44,7 @@ var makeTimeline = function() {
                   "type":"default",
                   "text":"<p>A timeline dedicated to strategizing together leading to the big day.</p>",
             //for each task in $scope.tasks - present them like this
-                  "date": [
-                    {
-                    // for (i=0; i < $scope.tasks.length; i++) {
-                      "startDate":$scope.tasks[0].dt,
-                      "endDate":$scope.tasks[0].dt,
-                      "headline":$scope.tasks[0].what,
-                      "text":"Is it working?",
-                      "tag":$scope.tasks[0].tags
-                      // }
-                    },
-                  ],
+                  "date": $scope.dates,
                   "era": [
                     {
                       "startDate":"2014,1,1", //date of sign up
@@ -51,11 +55,13 @@ var makeTimeline = function() {
                   ]
                 }
             };
-
+          console.log($scope.dates);
       }).error(function(err){
         alert('ERROR!');
       })
 }
+
+makeTimeline();
 
 
 

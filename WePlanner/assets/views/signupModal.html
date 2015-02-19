@@ -11,6 +11,33 @@
           <input ng-model="lastName" type="text" class="form-control" placeholder="Choose one or hyphenate!">
         </div>
         <div class="form-group">
+          <label>Person Name 1</label>
+          <input ng-model="user1" type="text" class="form-control">
+        </div>
+        <div class="form-group">
+          <label>Person Name 2</label>
+          <input ng-model="user2" type="text" class="form-control">
+        </div>
+        <div class="form-group">
+          <label>Wedding Date</label>
+          <input ng-model="wedding" type="text" class="form-control">
+          <!-- DATE PICKER -->
+          <h4>Select a date:</h4>
+
+          <pre><em>{{dt | date:'fullDate' }}</em></pre>
+
+          <div class="row">
+            <div class="col-md-6">
+              <p class="input-group">
+                <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+                <span class="input-group-btn">
+                  <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
           <label>E-mail</label>
           <input ng-model="email" type="text" class="form-control" required>
         </div>

@@ -11,7 +11,8 @@ module.exports = {
 
   attributes: {
     lastName:{
-      type:'string'
+      type:'string',
+      required:true
     },
     email:{
       type:'email',
@@ -20,6 +21,18 @@ module.exports = {
     },
     password:{
       type:'string',
+      required:true
+    },
+    user1:{
+      type:'string',
+      required:true
+    },
+    user2:{
+      type:'string',
+      required:true
+    },
+    wedding:{
+      type:'date',
       required:true
     },
     //associations

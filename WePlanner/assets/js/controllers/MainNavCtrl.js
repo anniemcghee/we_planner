@@ -40,11 +40,23 @@ app.controller('MainNavCtrl',['$scope','$location','$modal','UserService',functi
   };
 
   $scope.showNew = function(){
-    $modal.open({
+    var modalInstance = $modal.open({
       templateUrl:'/views/newTaskModal.html',
       controller:'NewTaskModalCtrl'
     })
+
+    modalInstance.result.then(function (data) {
+      console.log(data);
+    })
+
   };
+
+  $scope.showEdit = function(){
+    $modal.open({
+      templateUrl:'views/settingsModal.html',
+      controller:'SettingsModalCtrl'
+    })
+  }
 
   $scope.logout = function(){
     UserService.logout(function(err, data){
