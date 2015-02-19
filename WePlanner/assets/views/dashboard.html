@@ -1,9 +1,13 @@
-<div ng-controller="DashboardCtrl">
+<div>
 <alerts></alerts>
 <p>This is where the timeline goes when someone is logged in</p>
 
-<div class="page-header">
-<pipp-timeline-j-s source="data"
+<div>
+<!-- button with ng-click that calls the makeTimeline() function -->
+
+<button class="btn btn-primary" ng-click="makeTimeline()">Make Timeline</button>
+
+ <pipp-timeline-j-s source="data"
                    height="600"
                    width="90%"
                    start-zoom-adjust="0"
