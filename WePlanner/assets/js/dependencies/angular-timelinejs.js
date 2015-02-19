@@ -119,13 +119,14 @@ angular.module('pippTimelineDirectives', [])
       };
 
       // Async cases (when source data coming from services or other async call)
-      scope.$watch('source', function (newSource, oldSource) {
+      scope.$watchCollection('source', function (newSource, oldSource) {
         // Source not ready (maybe waiting on service or other async call)
         if (!newSource) {
-          console.log("Waiting for source data");
+          console.log("Waiting for source data!");
           return;
         }
         render(newSource);
+        return;
       });
 
       // Non-async cases (when source data is already on scope)
@@ -135,6 +136,8 @@ angular.module('pippTimelineDirectives', [])
       // source data.
       scope.$watch('state.index', function (newState, oldState) {
         console.log("Detected state change");
+        // alert("changed index");
+
         if (!newState == 'undefined') {
           return;
         }

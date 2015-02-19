@@ -1,4 +1,4 @@
-app.controller('MainNavCtrl',['$scope','$location','$modal','UserService',function($scope, $location, $modal, UserService){
+app.controller('MainNavCtrl',['$scope','$location','$modal','UserService', 'TimelineService', function($scope, $location, $modal, UserService, TimelineService){
 
   $scope.navCollapsed = true;
 
@@ -46,7 +46,9 @@ app.controller('MainNavCtrl',['$scope','$location','$modal','UserService',functi
     })
 
     modalInstance.result.then(function (data) {
-      console.log(data);
+      TimelineService.add(data);
+
+      console.log("New Timeline data from main nav", data);
     })
 
   };

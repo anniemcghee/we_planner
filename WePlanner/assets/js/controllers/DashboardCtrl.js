@@ -1,10 +1,10 @@
 app.controller('DashboardCtrl',['$scope','$http','$modal', 'AlertService','UserService', '$location', 'TimelineService',function($scope, $http, $modal, AlertService, UserService, $location, TimelineService) {
 
-$scope.UserService = UserService;
+  $scope.UserService = UserService;
 
-$scope.currentUser = UserService.currentUser
+  $scope.currentUser = UserService.currentUser
 
-console.log($scope.currentUser.id)
+// console.log($scope.currentUser.id)
 
 //get the current user CHECK
 
@@ -14,56 +14,77 @@ console.log($scope.currentUser.id)
 
 //loop through them and present them in $scope.data or src
 
-var makeTimeline = function() {
+// console.log(TimelineService.tasks);
+$scope.TimelineService = TimelineService;
 
-    $http.get('/api/user/'+$scope.currentUser.id+'/tasks')
-      .success(function(data){
-        $scope.tasks = data;
-        // console.log($scope.tasks);
 
-        $scope.dates = [];
 
-        for (i = 0; i < $scope.tasks.length; i++) {
-          $scope.dates[i] = {
-            "startDate":$scope.tasks[i].dt,
-            "endDate":$scope.tasks[i].dt,
-            "headline":$scope.tasks[i].what,
-            "text":"Person",
-            "tag":$scope.tasks[i].tags
-          }
-        }
+$scope.counter = 0;
 
-        console.log('HEY');
-        // console.log($scope.dates);
 
-          $scope.data = {
 
-                "timeline":
-                {
-                  "headline":$scope.currentUser.lastName+" Wedding",
-                  "type":"default",
-                  "text":"<p>A timeline dedicated to strategizing together leading to the big day.</p>",
-            //for each task in $scope.tasks - present them like this
-                  "date": $scope.dates,
-                  "era": [
-                    {
-                      "startDate":"2014,1,1", //date of sign up
-                      "endDate":"2014,12,31", //current date
-                      "headline":"Vanuatu's financial year is the same as the calendar year",
-                      "tag":"FINANCIAL YEAR"
-                    }
-                  ]
-                }
-            };
-          console.log($scope.dates);
-      }).error(function(err){
-        alert('ERROR!');
-      })
+$scope.TimelineService.get(function(err,data) {
+  $scope.dates = TimelineService.tasks;
+  $scope.timelineValues = {index: 0};
+  // $scope.data = {
+
+  //   "timeline":
+  //   {
+  //     "headline":$scope.currentUser.lastName+" Wedding",
+  //     "type":"default",
+  //     "text":"<p>A timeline dedicated to strategizing together leading to the big day.</p>",
+  //   //for each task in $scope.tasks - present them like this
+  //   "date": TimelineService.tasks,
+  //   "era": [
+  //   {
+  //       "startDate":"2014,1,1", //date of sign up
+  //       "endDate":"2014,12,31", //current date
+  //       "headline":"Vanuatu's financial year is the same as the calendar year",
+  //       "tag":"FINANCIAL YEAR"
+  //     }
+  //     ]
+  //   }
+  // };
+
+})
+
+$scope.taco = function() {
+  var random = Math.floor(Math.random() * ($scope.data.timeline['date'].length)) + 1;
+  console.log("Changing slide: ", random);
+  $scope.timelineValues['index'] = random;
 }
 
-makeTimeline();
+
+
+
+    $scope.$watchCollection('dates', function(){ //something changing in the scope that is being watched triggers the function
+      // alert('things changing');
+      // $scope.data.timeline['date'] = TimelineService.tasks
+        $scope.data = {
+
+    "timeline":
+    {
+      "headline":$scope.currentUser.lastName+" Wedding",
+      "type":"default",
+      "text":"<p>A timeline dedicated to strategizing together leading to the big day.</p>",
+    //for each task in $scope.tasks - present them like this
+    "date": TimelineService.tasks,
+    "era": [
+    {
+        "startDate":"2014,1,1", //date of sign up
+        "endDate":"2014,12,31", //current date
+        "headline":"Vanuatu's financial year is the same as the calendar year",
+        "tag":"FINANCIAL YEAR"
+      }
+      ]
+    }
+  };
+
+
+    })
 
 
 
 
-}]);
+
+  }]);
