@@ -16,11 +16,16 @@ app.factory('TimelineService', ['UserService', '$http', function(UserService, $h
             "endDate":task.dt,
             "headline":task.what,
             "text":"Person",
-            "tag":task.tags
+            "tag":task.tags[0]
           });
     },
+    edit: function(idx){
+      //maybe needs a callback
+    },
     remove: function(idx){
-      tasks.splice(idx, 1);
+      var self= this;
+
+      self.tasks.splice(idx, 1);
     },
     get: function(callback){
       var self = this;
@@ -35,11 +40,11 @@ app.factory('TimelineService', ['UserService', '$http', function(UserService, $h
             "endDate":data[i].dt,
             "headline":data[i].what,
             "text":"Person",
-            "tag":data[i].tags
+            "tag":data[i].tags[0]
           })
 
         }
-          // console.log("self", self.tasks);
+          console.log("self", self.tasks);
 
         callback(null,self.tasks);
       }).error(function(data){

@@ -11,10 +11,10 @@ app.controller('NewTaskModalCtrl', ['$scope','$http','$modalInstance','$routePar
     $scope.dt = null;
   };
 
-  // Disable weekend selection
-  $scope.disabled = function(date, mode) {
-    return ( mode === 'day' && ( date.getDay() === 0 || date.getDay() === 6 ) );
-  };
+  // // Disable weekend selection
+  // $scope.disabled = function(date, mode) {
+  //   return ( mode === 'day' && ( date.getDay() === 0 || date.getDay() === 6 ) );
+  // };
 
   $scope.toggleMin = function() {
     $scope.minDate = $scope.minDate ? null : new Date();
@@ -61,6 +61,7 @@ app.controller('NewTaskModalCtrl', ['$scope','$http','$modalInstance','$routePar
 //need routeParams to pull in user's id for user/id/tasks/new?
     $http.post('/api/user/'+userId+'/tasks', taskData)
     .success(function(data){
+
       AlertService.add('success','Task has been created.');
       $modalInstance.close(data);
     })

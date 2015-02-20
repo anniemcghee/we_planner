@@ -14,18 +14,11 @@ app.config(['$routeProvider','$locationProvider', function($routeProvider, $loca
       templateUrl:'/views/dashboard.html',
       controller:'DashboardCtrl'
     })
-    // .when('/contact/:id',{
-    //   templateUrl:'/views/show.html',
-    //   controller:'ShowCtrl'
-    // })
     .when('/about',{
       templateUrl:'/views/about.html',
       controller:'StaticCtrl'
     })
-    // .when('/faq',{
-    //   templateUrl:'/views/faq.html',
-    //   controller:'StaticCtrl'
-    // })
+
 
 }]);
 

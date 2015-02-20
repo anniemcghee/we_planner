@@ -1,17 +1,20 @@
 {{dates.length}}
-<div>
+<!-- <div>
 <alerts></alerts>
-<p>This is where the timeline goes when someone is logged in</p>
+<p>This is where the timeline goes when someone is logged in</p> -->
 
-<div>
-<!-- button with ng-click that calls the makeTimeline() function -->
+<!-- edit timeline  -->
+<button class="btn btn-warning" ng-click="showNew()">+</a></li>
+<button class="btn btn-warning" ng-click="showEdit()">Edit Tasks</button>
 
-<button class="btn btn-primary" ng-click="taco()">Make Timeline</button>
+<!-- add new timeline -->
 
-
-
-
-
+<div class="container">
+<div class="row text-centered">
+<div ng-show="timelineValues.index > 0" style="position:absolute; z-index:499; margin: 110px 0 0 170px;">
+      <button class="btn btn-warning btn-xs" ng-click="editItem()">Edit</button>
+      <button class="btn btn-danger btn-xs" ng-click="deleteItem()">Delete</button>
+</div>
  <pipp-timeline-j-s source="data"
                    height="600"
                    width="90%"
@@ -23,4 +26,5 @@
                    lang="en"
                    state="timelineValues"
                    debug="false"></pipp-timeline-j-s>
+</div>
 </div>

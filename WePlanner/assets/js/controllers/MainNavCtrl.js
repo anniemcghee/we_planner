@@ -53,16 +53,16 @@ app.controller('MainNavCtrl',['$scope','$location','$modal','UserService', 'Time
 
   };
 
-  $scope.showEdit = function(){
-    $modal.open({
-      templateUrl:'views/settingsModal.html',
-      controller:'SettingsModalCtrl'
-    })
-  }
+  // $scope.showEdit = function(){
+  //   $modal.open({
+  //     templateUrl:'views/settingsModal.html',
+  //     controller:'SettingsModalCtrl'
+  //   })
+  // }
 
   $scope.logout = function(){
     UserService.logout(function(err, data){
-
+      $location.path('/');
     });
   }
 

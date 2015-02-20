@@ -1,28 +1,29 @@
 <div class="modal-header">
-  <h3 class="modal-title">Edit Your Tasks</h3>
+  <h3 class="modal-title">Edit Task</h3>
 </div>
 <!-- <alerts></alerts> -->
-<!-- below the user will see the date and headline of their tasks with an edit and delete button - clicking edit will reveal a new modal with the task data filled in and the option to edit it -->
+<!-- here we have the option to add user1 and user2 names, wedding date, etc -->
 <div class="modal-body">
   <div class="row">
-    <div class="col-md-6">
-    <!-- need an ng repeat for task in tasks of the user so task data needs to be passed in to the edit task modal ctrl -->
-    <!-- they are all listed like a table to edit and delete from -->
-      <form ng-submit="editTask($index)">
-        <div class="form-group">
-          <label>Person 1</label>
-          <input ng-model="user1" type="text" class="form-control" placeholder="Choose one or hyphenate!">
-        </div>
-        <div class="form-group">
-          <label>Person 2</label>
-          <input ng-model="user2" type="text" class="form-control" required>
-        </div>
-        <div class="form-group">
-          <label>Wedding Date</label>
-          <input ng-model="wedding" class="form-control" required>
-        </div>
-        <input type="submit" value="Edit Settings" class="btn btn-primary">
-      </form>
-    </div>
+      <table class="table">
+        <thead>
+          <th>Date</th>
+          <th>Headline</th>
+          <th>Buttons</th>
+        </thead>
+        <tbody ng-repeat="task in tasks">
+          <tr>
+            <td>{{task.endDate}}</td>
+            <td>{{task.headline}}</td>
+            <td>
+              <button class="btn btn-warning" ng-click="editTask($index)">Edit</button>
+              <button class="btn btn-danger" ng-click="deleteTask($index)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
   </div>
 </div>
+
+
+
