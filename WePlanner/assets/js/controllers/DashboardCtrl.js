@@ -4,6 +4,8 @@ app.controller('DashboardCtrl',['$scope','$http','$modal', 'AlertService','UserS
     $location.path('/');
   }
 
+  $scope.task = [];
+
   $scope.UserService = UserService;
 
   $scope.currentUser = UserService.currentUser;
@@ -56,16 +58,80 @@ app.controller('DashboardCtrl',['$scope','$http','$modal', 'AlertService','UserS
 
 //these are the two buttons inside the timeline that are great
   $scope.editItem = function(){
-    console.log('item to edit', TimelineService.tasks[$scope.timelineValues.index-1]);
+    $scope.task = TimelineService.tasks[$scope.timelineValues.index-1]
+
+    // console.log('Task Index is:')
+    console.log('item to edit', $scope.task);
     //open a modal identical to new modal
+    var modalInstance = $modal.open({
+      templateUrl:'/views/editTaskIndexModal.html',
+      controller:'EditTaskIndexModalCtrl',
+      resolve:{
+        task:function(){
+          return $scope.task;
+        }
+      }
+    }).result.then(function(updatedTask){
+      $scope.task=updatedTask
+    },function(){
+      // alert('modal closed with cancel')
+    })
+  }
+
+  $scope.deleteItem = function(idx){
+    $scope.task = TimelineService.tasks[$scope.timelineValues.index-1]
+
+    console.log('THIS IS THE TASK',$scope.task)
+    idx = $scope.timelineValues.index-1
+
+    $http.delete('api/user/'+UserService.currentUser.id+'/tasks/'+$scope.task.id)
+    // IT IS MAD AT SCOPE.TASK.ID because it doesn't know what it is
+        .success(function(data){
+        console.log('Deleted success',data);
+      })
+      .error(function(err){
+        alert(err);
+      });
+
+
+    // $scope.tasks.splice(idx, 1);
+    TimelineService.remove(idx);
+    // $modalInstance.close();
+  }
+
+
+
+ // $scope.editPost = function() {
+ //    $modal.open({
+ //      templateUrl:'/views/post/editModal.html',
+ //      controller:'PostEditModalCtrl',
+ //      resolve:{
+ //        post:function(){
+ //          return $scope.post
+ //        }
+ //      }
+ //    }).result.then(function(updatedPost){
+ //      $scope.post=updatedPost
+ //    },function(){
+ //      alert('modal closed with cancel')
+ //    })
+ //  }
+
     //use resolve to pass in data and populate text fields
     //update in db via taskcontroller update Task
-  };
 
-  $scope.deleteItem = function(){
-    //code from other one + DB delete somehow
-    console.log('item to delete',$scope.timelineValues.index-1,TimelineService.tasks[$scope.timelineValues.index-1]);
-  };
+  // $scope.deleteItem = function(){
+  //   //code from other one + DB delete somehow
+  //   console.log('item to delete',$scope.timelineValues.index-1,TimelineService.tasks[$scope.timelineValues.index-1]);
+
+  // // $scope.deleteTask = function(idx){
+  // //   $scope.tasks.splice(idx, 1);
+  // //   TimelineService.remove(idx);
+  // //   // $modalInstance.close();
+  // // }
+
+
+  // };
 
 
 //this is the big modal with the list - OLD MODAL

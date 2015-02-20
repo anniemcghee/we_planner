@@ -33,6 +33,7 @@ module.exports = {
       res.send(400, err);
     })
   },
+  //below is where we update on the backend
   updateTask:function(req,res){
     var taskData = {
       //below is where you add the req.body.fields from the form
@@ -45,6 +46,14 @@ module.exports = {
       owner:req.session.user.id
     };
     Task.update({where:{owner:req.params.id , id:req.params.taskid}},taskData)
+    .then(function(tasks){
+      res.send(tasks);
+    }).catch(function(err){
+      res.send(400, err);
+    })
+  },
+  deleteTask:function(req,res){
+    Task.delete({where:{owner:req.params.id , id:req.params.taskid}},taskData)
     .then(function(tasks){
       res.send(tasks);
     }).catch(function(err){

@@ -36,7 +36,8 @@ module.exports.routes = {
 
   'post /api/user/:id/tasks':"TaskController.addTask",
   'get /api/user/:id/tasks':"TaskController.getTasks",
-  // 'put /api/user/:id/tasks/:taskid':"TaskController.updateTask",
+  'put /api/user/:id/tasks/:taskid':"TaskController.updateTask",
+  'delete /api/user/:id/tasks/:taskid':"TaskController.deleteTask",
 
   'post /api/auth':"AuthController.login",
 
