@@ -114,6 +114,8 @@ angular.module('pippTimelineDirectives', [])
             timeline.reload(s, scope.state.index);
           } else {
             timeline.reload(s);
+                        // timeline.reload(s, scope.state.index);
+
           }
         }
       };
@@ -125,7 +127,10 @@ angular.module('pippTimelineDirectives', [])
           console.log("Waiting for source data!");
           return;
         }
+
+        $timeout(function() {
         render(newSource);
+        })
         return;
       });
 

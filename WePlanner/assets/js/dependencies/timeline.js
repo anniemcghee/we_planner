@@ -27,7 +27,7 @@
 	MIT Licensed.
 ================================================== */
 (function() {
-	var initializing = false,
+	var initializing = false,f
 	fnTest = /xyz/.test(function() {
 		xyz;
 		}) ? /\b_super\b/: /.*/;
@@ -2018,10 +2018,10 @@ if(typeof VMM != 'undefined' && typeof VMM.Util == 'undefined') {
 
 			return text
 				//.replace(urlPattern, "<a target='_blank' href='$&' onclick='void(0)'>$&</a>")
-				.replace(url_pattern, url_replace)
-				.replace(pseudoUrlPattern, "$1<a target='_blank' class='hyphenate' onclick='void(0)' href='http://$2'>$2</a>")
-				.replace(emailAddressPattern, "<a target='_blank' onclick='void(0)' href='mailto:$1'>$1</a>")
-				.replace(twitterHandlePattern, "<a href='http://twitter.com/$1' target='_blank' onclick='void(0)'>@$1</a>");
+				// .replace(url_pattern, url_replace)
+				// .replace(pseudoUrlPattern, "$1<a target='_blank' class='hyphenate' onclick='void(0)' href='http://$2'>$2</a>")
+				// .replace(emailAddressPattern, "<a target='_blank' onclick='void(0)' href='mailto:$1'>$1</a>")
+				// .replace(twitterHandlePattern, "<a href='http://twitter.com/$1' target='_blank' onclick='void(0)'>@$1</a>");
 
 				// TURN THIS BACK ON TO AUTOMAGICALLY LINK HASHTAGS TO TWITTER SEARCH
 				//.replace(twitterSearchPattern, "<a href='http://twitter.com/search?q=%23$2' target='_blank' 'void(0)'>$1</a>");
@@ -5472,6 +5472,7 @@ if(typeof VMM != 'undefined' && typeof VMM.Slider == 'undefined') {
 		/* BUILD SLIDES
 		================================================== */
 		function buildSlides(d) {
+
 			var i	= 0;
 
 			VMM.attachElement($slides_items, "");
@@ -5479,7 +5480,8 @@ if(typeof VMM != 'undefined' && typeof VMM.Slider == 'undefined') {
 
 			for(i = 0; i < d.length; i++) {
 				var _slide = new VMM.Slider.Slide(d[i], $slides_items);
-				//_slide.show();
+				// console.log("slide", _slide);
+				_slide.show();
 				slides.push(_slide);
 			}
 		}

@@ -1,4 +1,4 @@
-app.controller('DashboardCtrl',['$scope','$http','$modal', 'AlertService','UserService', '$location', 'TimelineService',function($scope, $http, $modal, AlertService, UserService, $location, TimelineService) {
+app.controller('DashboardCtrl',['$scope','$http','$modal', 'AlertService','UserService', '$location', 'TimelineService', '$timeout', function($scope, $http, $modal, AlertService, UserService, $location, TimelineService, $timeout) {
 
   if(!UserService.currentUser){
     $location.path('/');
@@ -19,7 +19,9 @@ app.controller('DashboardCtrl',['$scope','$http','$modal', 'AlertService','UserS
 
     })
 
-  $scope.$watchCollection('dates', function(){
+  $scope.$watchCollection('TimelineService', function(){
+
+$scope.taco = $scope.timelineValues
 
     $scope.data = {
 
@@ -32,14 +34,15 @@ app.controller('DashboardCtrl',['$scope','$http','$modal', 'AlertService','UserS
       "date": TimelineService.tasks,
       "era": [
       {
-          "startDate":"2014,1,1", //$scope.currentUser.createdAt
-          "endDate":"2014,12,31", //$scope.currentUser.wedding
-          "headline":"Vanuatu's financial year is the same as the calendar year", //nothing
-          "tag":"FINANCIAL YEAR" //no tag
+          "startDate":$scope.currentUser.createdAt,
+          "endDate":$scope.currentUser.wedding, //$scope.currentUser.wedding
+          "headline":"",
+          "tag":""
             }
           ]
         }
       };
+
     })
 
 
@@ -50,7 +53,7 @@ app.controller('DashboardCtrl',['$scope','$http','$modal', 'AlertService','UserS
     })
 
     modalInstance.result.then(function (data) {
-      TimelineService.add(data);
+      TimelineService.get();
 
       console.log("New Timeline data from main nav", data);
     })
@@ -59,7 +62,7 @@ app.controller('DashboardCtrl',['$scope','$http','$modal', 'AlertService','UserS
 //these are the two buttons inside the timeline that are great
   $scope.editItem = function(){
     $scope.task = TimelineService.tasks[$scope.timelineValues.index-1]
-
+    console.log("TASK", $scope.task)
     // console.log('Task Index is:')
     console.log('item to edit', $scope.task);
     //open a modal identical to new modal
@@ -73,6 +76,8 @@ app.controller('DashboardCtrl',['$scope','$http','$modal', 'AlertService','UserS
       }
     }).result.then(function(updatedTask){
       $scope.task=updatedTask
+
+      //After modal edit and resolve / modal close do a timeline get request to refactor array
     },function(){
       // alert('modal closed with cancel')
     })

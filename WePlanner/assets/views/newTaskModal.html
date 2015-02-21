@@ -23,7 +23,7 @@
       <div class="row">
         <div class="col-md-6">
           <p class="input-group">
-            <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+            <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" min-date="minDate" max-date="'2020-06-22'" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
             <span class="input-group-btn">
               <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
             </span>
@@ -38,8 +38,8 @@
           <label>Who</label>
           <!-- icons for person 1 or person 2 or both-->
           <div>
-              <input type="checkbox" ng-model="user1" ng-false-value="false" value="user1"> User 1
-              <input type="checkbox" ng-model="user2" ng-false-value="false" value="user2"> User 2 <br/>
+              <input type="checkbox" ng-model="user1" ng-false-value="false" value="user1"> {{userOne}}
+              <input type="checkbox" ng-model="user2" ng-false-value="false" value="user2"> {{userTwo}}<br/>
           </div>
           <!-- <input ng-model="who" type="text" class="form-control" required> -->
         </div>

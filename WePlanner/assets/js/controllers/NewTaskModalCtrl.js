@@ -1,6 +1,8 @@
 app.controller('NewTaskModalCtrl', ['$scope','$http','$modalInstance','$routeParams','AlertService', 'UserService', function($scope, $http, $modalInstance, $routeParams, AlertService, UserService){
 
 //datepicker ctrl info goes here
+  $scope.userOne = UserService.currentUser.userOne;
+  $scope.userTwo = UserService.currentUser.userTwo;
 
   $scope.today = function() {
     $scope.dt = new Date();
@@ -10,6 +12,8 @@ app.controller('NewTaskModalCtrl', ['$scope','$http','$modalInstance','$routePar
   $scope.clear = function () {
     $scope.dt = null;
   };
+  // $scope.showWeeks=false;
+  // $scope.maxDate = '01-01-2020'
 
   // // Disable weekend selection
   // $scope.disabled = function(date, mode) {
@@ -52,8 +56,8 @@ app.controller('NewTaskModalCtrl', ['$scope','$http','$modalInstance','$routePar
     var taskData = {
       type:$scope.type,
       dt:$scope.dt,
-      user1:$scope.user1,
-      user2:$scope.user2,
+      user1:$scope.userOne,
+      user2:$scope.userTwo,
       what:$scope.what,
       tags:$scope.tags
     }

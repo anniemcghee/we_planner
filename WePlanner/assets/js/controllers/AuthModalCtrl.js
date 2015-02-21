@@ -1,6 +1,6 @@
-app.controller('AuthModalCtrl', ['$scope','$http','$modalInstance','AlertService', 'UserService', function($scope, $http, $modalInstance, AlertService, UserService){
+app.controller('AuthModalCtrl', ['$scope','$http','$modalInstance','AlertService', 'UserService','TimelineService', function($scope, $http, $modalInstance, AlertService, UserService, TimelineService){
 //DATE PICKER ACTION IS BELOW
-  $scope.today = function() {
+   $scope.today = function() {
     $scope.dt = new Date();
   };
   $scope.today();
@@ -8,11 +8,13 @@ app.controller('AuthModalCtrl', ['$scope','$http','$modalInstance','AlertService
   $scope.clear = function () {
     $scope.dt = null;
   };
+  // $scope.showWeeks=false;
+  // $scope.maxDate = '01-01-2020'
 
-  // Disable weekend selection
-  $scope.disabled = function(date, mode) {
-    return ( mode === 'day' && ( date.getDay() === 0 || date.getDay() === 6 ) );
-  };
+  // // Disable weekend selection
+  // $scope.disabled = function(date, mode) {
+  //   return ( mode === 'day' && ( date.getDay() === 0 || date.getDay() === 6 ) );
+  // };
 
   $scope.toggleMin = function() {
     $scope.minDate = $scope.minDate ? null : new Date();
@@ -34,6 +36,37 @@ app.controller('AuthModalCtrl', ['$scope','$http','$modalInstance','AlertService
   $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
   $scope.format = $scope.formats[0];
 //END OF DATE PICKER
+  $scope.userId = UserService.currentUser.id
+//for the use of signup add wedding task ONLY
+  $scope.addNew = function(){
+// date / who / what / tags / type
+
+
+    var taskData = {
+      type:"Appointment",
+      dt:$scope.wedding,
+      // user1:$scope.user1,
+      // user2:$scope.user2,
+      what:"Get married!"
+      // tags:$scope.tags
+    }
+
+//need routeParams to pull in user's id for user/id/tasks/new?
+    $http.post('/api/user/'+$scope.userId+'/tasks', taskData)
+    .success(function(data){
+      alert('Wedding created')
+      // AlertService.add('success','Task has been created.');
+      // $modalInstance.close(data);
+    })
+    .error(function(err){
+      alert(err);
+    })
+
+  }
+  //end of wedding task adder
+
+
+
 
   $scope.login = function(){
     // alert('login function')
@@ -60,19 +93,23 @@ app.controller('AuthModalCtrl', ['$scope','$http','$modalInstance','AlertService
       email:$scope.email,
       password:$scope.password,
       lastName:$scope.lastName,
-      user1:$scope.user1,
-      user2:$scope.user2,
+      userOne:$scope.userOne,
+      userTwo:$scope.userTwo,
       wedding:$scope.wedding
     }
 
 
     $http.post('/api/user',signupData)
     .success(function(data){
-      $scope.login()
+
+      $scope.login();
+      console.log("LOGGED IN USER IS: ",$scope.userId)
+      //ADD A NEW TASK TO INITIALIZE TIMELINE
     })
     .error(function(err){
       alert(err);
     })
+      $scope.addNew();
   }
 
 

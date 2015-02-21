@@ -7,12 +7,50 @@ app.controller('EditTaskIndexModalCtrl', ['$scope','$http','$modalInstance','Ale
   // console.log('From edit task modal, scope.task is:',$scope.task);
 
 
-      $scope.what = task.what;
-      $scope.user1 = task.user1;
-      $scope.user2 = task.user2;
-      $scope.type = task.type;
-      $scope.dt = task.dt;
-      $scope.tags = task.tags
+  //DATEPICKER INFO
+
+  $scope.today = function() {
+    $scope.dt = new Date();
+  };
+  $scope.today();
+
+  $scope.clear = function () {
+    $scope.dt = null;
+  };
+
+  // Disable weekend selection
+  $scope.disabled = function(date, mode) {
+    return ( mode === 'day' && ( date.getDay() === 0 || date.getDay() === 6 ) );
+  };
+
+  $scope.toggleMin = function() {
+    $scope.minDate = $scope.minDate ? null : new Date();
+  };
+  $scope.toggleMin();
+
+  $scope.open = function($event) {
+    $event.preventDefault();
+    $event.stopPropagation();
+
+    $scope.opened = true;
+  };
+
+  $scope.dateOptions = {
+    formatYear: 'yy',
+    startingDay: 1
+  };
+
+  $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+  $scope.format = $scope.formats[0];
+//END OF DATE PICKER
+
+  $scope.what = task.headline;
+  $scope.user1 = task.user1;
+  $scope.user2 = task.user2;
+  $scope.type = task.type;
+  $scope.dt = task.endDate;
+  $scope.tags = task.tag;
+  //need a scope for TASK ID
 
   $scope.editTask = function(){
     // console.log('Loading this task',$scope.task)
@@ -23,7 +61,7 @@ app.controller('EditTaskIndexModalCtrl', ['$scope','$http','$modalInstance','Ale
       user2: $scope.user2,
       type: $scope.type,
       dt: $scope.dt,
-      tags: $scope.tags
+      tags: $scope.tags[0].text
     }
 
     $http.put('/api/user/'+UserService.currentUser.id+'/tasks/'+$scope.task, taskData)

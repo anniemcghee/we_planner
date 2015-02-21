@@ -1,4 +1,9 @@
-{{dates.length}}
+{{dates.length}} TV: {{timelineValues}}
+OB:
+<div ng-repeat="task in TimelineService.tasks">
+{{$index}} - {{task}}
+</div>
+
 <!-- <div>
 <alerts></alerts>
 <p>This is where the timeline goes when someone is logged in</p> -->
@@ -11,6 +16,10 @@
 
 <div class="container">
 <div class="row text-centered">
+<!-- <div ng-hide="dates.length < 1">
+<h1>Add a task to get started!</h1>
+</div> -->
+
 <div ng-show="timelineValues.index > 0" style="position:absolute; z-index:499; margin: 110px 0 0 170px;">
       <button class="btn btn-warning btn-xs" ng-click="editItem()">Edit</button>
       <button class="btn btn-danger btn-xs" ng-click="deleteItem()">Delete</button>

@@ -12,16 +12,20 @@ app.factory('TimelineService', ['UserService', '$http', function(UserService, $h
 
       console.log("adding task", task);
       self.tasks.push({
+            "type":task.type,
             "startDate":task.dt,
             "endDate":task.dt,
             "headline":task.what,
-            "text":"Person",
-            "tag":task.tags[0]
+            "text":[task.user1, task.user2],
+            "tag":task.tags[0].text
           });
     },
-    edit: function(idx){
-      //maybe needs a callback
-    },
+    // put: function(idx){
+    //   var self = this;
+    //   $http.put('/api/user/'+ UserService.currentUser.id +'/tasks/')
+
+    //   //maybe needs a callback
+    // },
     remove: function(idx){
       var self= this;
 
@@ -36,11 +40,12 @@ app.factory('TimelineService', ['UserService', '$http', function(UserService, $h
 
         for (i = 0; i < data.length; i++) {
           self.tasks.push({
+            "type":data[i].type,
             "startDate":data[i].dt,
             "endDate":data[i].dt,
             "headline":data[i].what,
-            "text":"Person",
-            "tag":data[i].tags[0]
+            // "text":[task.user1, task.user2],
+            "tag":data[i].tags[0].text
           })
 
         }

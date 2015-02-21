@@ -23,11 +23,11 @@ module.exports = {
       type:'string',
       required:true
     },
-    user1:{
+    userOne:{
       type:'string',
       required:true
     },
-    user2:{
+    userTwo:{
       type:'string',
       required:true
     },
