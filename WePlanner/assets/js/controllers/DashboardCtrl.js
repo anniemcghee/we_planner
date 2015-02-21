@@ -19,9 +19,9 @@ app.controller('DashboardCtrl',['$scope','$http','$modal', 'AlertService','UserS
 
     })
 
-  $scope.$watchCollection('TimelineService', function(){
+  $scope.$watchCollection('dates', function(){
 
-$scope.taco = $scope.timelineValues
+// $scope.taco = $scope.timelineValues
 
     $scope.data = {
 
@@ -53,7 +53,8 @@ $scope.taco = $scope.timelineValues
     })
 
     modalInstance.result.then(function (data) {
-      TimelineService.get();
+      TimelineService.add(data);
+      // $scope.timelineValues = {index: {}};
 
       console.log("New Timeline data from main nav", data);
     })
@@ -64,7 +65,7 @@ $scope.taco = $scope.timelineValues
     $scope.task = TimelineService.tasks[$scope.timelineValues.index-1]
     console.log("TASK", $scope.task)
     // console.log('Task Index is:')
-    console.log('item to edit', $scope.task);
+    // console.log('item to edit', $scope.task);
     //open a modal identical to new modal
     var modalInstance = $modal.open({
       templateUrl:'/views/editTaskIndexModal.html',
@@ -76,7 +77,7 @@ $scope.taco = $scope.timelineValues
       }
     }).result.then(function(updatedTask){
       $scope.task=updatedTask
-
+      TimelineService.sort();
       //After modal edit and resolve / modal close do a timeline get request to refactor array
     },function(){
       // alert('modal closed with cancel')

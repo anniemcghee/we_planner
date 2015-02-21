@@ -50,6 +50,7 @@ app.controller('EditTaskIndexModalCtrl', ['$scope','$http','$modalInstance','Ale
   $scope.type = task.type;
   $scope.dt = task.endDate;
   $scope.tags = task.tag;
+  $scope.id = task.id;
   //need a scope for TASK ID
 
   $scope.editTask = function(){

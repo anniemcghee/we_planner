@@ -7,11 +7,19 @@ app.factory('TimelineService', ['UserService', '$http', function(UserService, $h
     clear: function(){
       tasks=[];
     },
+    sort: function() {
+      this.tasks = this.tasks.sort(function(a, b) {
+        var x = new Date(a["startDate"]); var y = new Date(b["startDate"]);
+        return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+      });
+      return this.tasks;
+    },
     add: function(task){
       var self= this;
 
       console.log("adding task", task);
       self.tasks.push({
+            "id": task.id,
             "type":task.type,
             "startDate":task.dt,
             "endDate":task.dt,
@@ -19,6 +27,7 @@ app.factory('TimelineService', ['UserService', '$http', function(UserService, $h
             "text":[task.user1, task.user2],
             "tag":task.tags[0].text
           });
+      this.sort();
     },
     // put: function(idx){
     //   var self = this;
@@ -40,6 +49,7 @@ app.factory('TimelineService', ['UserService', '$http', function(UserService, $h
 
         for (i = 0; i < data.length; i++) {
           self.tasks.push({
+            "id": data[i].id,
             "type":data[i].type,
             "startDate":data[i].dt,
             "endDate":data[i].dt,
