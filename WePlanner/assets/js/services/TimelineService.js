@@ -14,6 +14,14 @@ app.factory('TimelineService', ['UserService', '$http', function(UserService, $h
       });
       return this.tasks;
     },
+    indexOf: function(task) {
+      for(var i = 0; i < this.tasks.length; i++) {
+        if (this.tasks[i].id == task.id) {
+          return i;
+        }
+      }
+      return 0;
+    },
     add: function(task){
       var self= this;
 

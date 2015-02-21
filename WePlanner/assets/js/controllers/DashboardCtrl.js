@@ -54,7 +54,8 @@ app.controller('DashboardCtrl',['$scope','$http','$modal', 'AlertService','UserS
 
     modalInstance.result.then(function (data) {
       TimelineService.add(data);
-      // $scope.timelineValues = {index: {}};
+      // debugger;
+      $scope.timelineValues = {index: TimelineService.indexOf(data) };
 
       console.log("New Timeline data from main nav", data);
     })
