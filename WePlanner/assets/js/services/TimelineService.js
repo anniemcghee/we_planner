@@ -72,7 +72,7 @@ app.factory('TimelineService', ['UserService', '$http', function(UserService, $h
             "type":data[i].type,
             "startDate":data[i].dt,
             "endDate":data[i].dt,
-            "headline":data[i].what,
+            "headline":data[i].what
             // "text":[task.user1, task.user2],
             // "tag":data[i].tags[0].text
           })

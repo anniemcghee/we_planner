@@ -19,7 +19,7 @@ app.controller('DashboardCtrl',['$scope','$http','$modal', 'AlertService','UserS
 
     })
 
-  $scope.$watchCollection('dates', function(){
+  $scope.$watchCollection('TimelineService', function(){
 
 // $scope.taco = $scope.timelineValues
 
@@ -55,6 +55,7 @@ app.controller('DashboardCtrl',['$scope','$http','$modal', 'AlertService','UserS
     modalInstance.result.then(function (data) {
       TimelineService.add(data);
       // debugger;
+      TimelineService.get(function() { $scope.timelineValues = {index: TimelineService.indexOf(data) }})
       $scope.timelineValues = {index: TimelineService.indexOf(data) };
 
       console.log("New Timeline data from main nav", data);
@@ -79,10 +80,8 @@ app.controller('DashboardCtrl',['$scope','$http','$modal', 'AlertService','UserS
     modalInstance.result.then(function(updatedTask){
       TimelineService.get(function() { $scope.timelineValues = {index: TimelineService.indexOf(updatedTask) }})
 
-      // $scope.timelineValues = {index: TimelineService.indexOf(updatedTask) };
-      // $scope.task=updatedTask
-      // TimelineService.sort();
-      //After modal edit and resolve / modal close do a timeline get request to refactor array
+      $scope.timelineValues = {index: TimelineService.indexOf(updatedTask) };
+
     })
   }
 
@@ -90,20 +89,20 @@ app.controller('DashboardCtrl',['$scope','$http','$modal', 'AlertService','UserS
     $scope.task = TimelineService.tasks[$scope.timelineValues.index-1]
 
     console.log('THIS IS THE TASK',$scope.task)
-    idx = $scope.timelineValues.index-1
+    idx = $scope.timelineValues.index
 
     $http.delete('api/user/'+UserService.currentUser.id+'/tasks/'+$scope.task.id)
-    // IT IS MAD AT SCOPE.TASK.ID because it doesn't know what it is
         .success(function(data){
         console.log('Deleted success',data);
+
       })
       .error(function(err){
-        alert(err);
+        // alert(err);
       });
+        TimelineService.get(function() { $scope.timelineValues = {index: TimelineService.indexOf(idx) }})
 
 
     // $scope.tasks.splice(idx, 1);
-    TimelineService.remove(idx);
     // $modalInstance.close();
   }
 
