@@ -89,7 +89,7 @@ app.controller('DashboardCtrl',['$scope','$http','$modal', 'AlertService','UserS
     $scope.task = TimelineService.tasks[$scope.timelineValues.index-1]
 
     console.log('THIS IS THE TASK',$scope.task)
-    idx = $scope.timelineValues.index
+    idx = $scope.timelineValues.index-1
 
     $http.delete('api/user/'+UserService.currentUser.id+'/tasks/'+$scope.task.id)
         .success(function(data){
@@ -99,6 +99,7 @@ app.controller('DashboardCtrl',['$scope','$http','$modal', 'AlertService','UserS
       .error(function(err){
         // alert(err);
       });
+        TimelineService.remove(idx);
         TimelineService.get(function() { $scope.timelineValues = {index: TimelineService.indexOf(idx) }})
 
 
@@ -106,55 +107,20 @@ app.controller('DashboardCtrl',['$scope','$http','$modal', 'AlertService','UserS
     // $modalInstance.close();
   }
 
+//This is the code to use for the list view
+  // $scope.showEdit = function(){
+  //   console.log('tl index maybe?',$scope.timelineValues.index-1);
+  //   var modalInstance = $modal.open({
+  //     templateUrl:'/views/editTaskModal.html',
+  //     controller:'EditTaskModalCtrl'
+  //   })
 
+  //   // modalInstance.result.then(function (data) {
+  //   //   TimelineService.update(data);
 
- // $scope.editPost = function() {
- //    $modal.open({
- //      templateUrl:'/views/post/editModal.html',
- //      controller:'PostEditModalCtrl',
- //      resolve:{
- //        post:function(){
- //          return $scope.post
- //        }
- //      }
- //    }).result.then(function(updatedPost){
- //      $scope.post=updatedPost
- //    },function(){
- //      alert('modal closed with cancel')
- //    })
- //  }
-
-    //use resolve to pass in data and populate text fields
-    //update in db via taskcontroller update Task
-
-  // $scope.deleteItem = function(){
-  //   //code from other one + DB delete somehow
-  //   console.log('item to delete',$scope.timelineValues.index-1,TimelineService.tasks[$scope.timelineValues.index-1]);
-
-  // // $scope.deleteTask = function(idx){
-  // //   $scope.tasks.splice(idx, 1);
-  // //   TimelineService.remove(idx);
-  // //   // $modalInstance.close();
-  // // }
-
+  //   //   console.log("New Timeline data from main nav", data);
+  //   // })
 
   // };
-
-
-//this is the big modal with the list - OLD MODAL
-  $scope.showEdit = function(){
-    console.log('tl index maybe?',$scope.timelineValues.index-1);
-    var modalInstance = $modal.open({
-      templateUrl:'/views/editTaskModal.html',
-      controller:'EditTaskModalCtrl'
-    })
-
-    // modalInstance.result.then(function (data) {
-    //   TimelineService.update(data);
-
-    //   console.log("New Timeline data from main nav", data);
-    // })
-
-  };
 
 }]);

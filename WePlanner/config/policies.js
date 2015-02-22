@@ -29,8 +29,10 @@ module.exports.policies = {
     '*':['sessionAuth'],
     'create':true
     },
-    'TaskController':true
-    // '*':['sessionAuth']
+    'TaskController':{
+    '*':['sessionAuth']
+    }
+    // 'create':true
     // }
 		// Apply the `isNiceToAnimals` AND `hasRabbitFood` policies
 		// before letting any users feed our rabbits

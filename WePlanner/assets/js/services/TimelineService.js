@@ -32,28 +32,11 @@ app.factory('TimelineService', ['UserService', '$http', function(UserService, $h
             "startDate":task.dt,
             "endDate":task.dt,
             "headline":task.what,
-            "text":[task.user1, task.user2]
+            "text":[task.user1, task.user2],
             // "tag":task.tags[0].text
           });
       this.sort();
     },
-    // edit: function(task){
-    //   var self = this;
-    //   self.tasks.update({
-    //         "id": task.id,
-    //         "type":task.type,
-    //         "startDate":task.dt,
-    //         "endDate":task.dt,
-    //         "headline":task.what,
-    //         "text":[task.user1, task.user2]
-    //         // "tag":task.tags[0].text
-    //       });
-
-    //   this.sort();
-
-
-    //   //maybe needs a callback
-    // },
     remove: function(idx){
       var self= this;
 
@@ -72,8 +55,8 @@ app.factory('TimelineService', ['UserService', '$http', function(UserService, $h
             "type":data[i].type,
             "startDate":data[i].dt,
             "endDate":data[i].dt,
-            "headline":data[i].what
-            // "text":[task.user1, task.user2],
+            "headline":data[i].what,
+            "text":[data[i].user1, data[i].user2],
             // "tag":data[i].tags[0].text
           })
 
