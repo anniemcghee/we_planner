@@ -18,11 +18,6 @@ app.controller('MainNavCtrl',['$scope','$location','$modal','UserService', 'Time
   //location is directly related to ngRoute that we loaded into our app - it helps get the url - or can set it with path('/whatever')
   }
 
-  // $scope.showTimeline = function(){
-  //   //the timeline will magically render on homepage? not a modal.
-  //   render '/';
-  // }
-
   $scope.showLogin = function(){
     // alert('Here comes the modal');
     $modal.open({

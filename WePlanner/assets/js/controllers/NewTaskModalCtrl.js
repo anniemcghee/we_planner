@@ -12,13 +12,6 @@ app.controller('NewTaskModalCtrl', ['$scope','$http','$modalInstance','$routePar
   $scope.clear = function () {
     $scope.dt = null;
   };
-  // $scope.showWeeks=false;
-  // $scope.maxDate = '01-01-2020'
-
-  // // Disable weekend selection
-  // $scope.disabled = function(date, mode) {
-  //   return ( mode === 'day' && ( date.getDay() === 0 || date.getDay() === 6 ) );
-  // };
 
   $scope.toggleMin = function() {
     $scope.minDate = $scope.minDate ? null : new Date();
@@ -50,7 +43,7 @@ app.controller('NewTaskModalCtrl', ['$scope','$http','$modalInstance','$routePar
 
 
   $scope.addNew = function(){
-// date / who / what / tags / type
+
     var userId = UserService.currentUser.id
 
     var taskData = {
@@ -62,7 +55,6 @@ app.controller('NewTaskModalCtrl', ['$scope','$http','$modalInstance','$routePar
       tags:$scope.tags
     }
 
-//need routeParams to pull in user's id for user/id/tasks/new?
     $http.post('/api/user/'+userId+'/tasks', taskData)
     .success(function(data){
 
@@ -75,7 +67,6 @@ app.controller('NewTaskModalCtrl', ['$scope','$http','$modalInstance','$routePar
 
   }
 
-//here's where you edit a task? Or in a new modal where delete is an option?
-//yes - a new modal.
+
 
 }]);

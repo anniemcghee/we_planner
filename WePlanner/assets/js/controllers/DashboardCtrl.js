@@ -65,23 +65,24 @@ app.controller('DashboardCtrl',['$scope','$http','$modal', 'AlertService','UserS
   $scope.editItem = function(){
     $scope.task = TimelineService.tasks[$scope.timelineValues.index-1]
     console.log("TASK", $scope.task)
-    // console.log('Task Index is:')
     // console.log('item to edit', $scope.task);
-    //open a modal identical to new modal
     var modalInstance = $modal.open({
       templateUrl:'/views/editTaskIndexModal.html',
       controller:'EditTaskIndexModalCtrl',
-      resolve:{
+      resolve:{ //resolve passes the info into the modal
         task:function(){
           return $scope.task;
         }
       }
-    }).result.then(function(updatedTask){
-      $scope.task=updatedTask
-      TimelineService.sort();
+    })
+
+    modalInstance.result.then(function(updatedTask){
+      TimelineService.get(function() { $scope.timelineValues = {index: TimelineService.indexOf(updatedTask) }})
+
+      // $scope.timelineValues = {index: TimelineService.indexOf(updatedTask) };
+      // $scope.task=updatedTask
+      // TimelineService.sort();
       //After modal edit and resolve / modal close do a timeline get request to refactor array
-    },function(){
-      // alert('modal closed with cancel')
     })
   }
 

@@ -57,15 +57,16 @@ app.controller('EditTaskIndexModalCtrl', ['$scope','$http','$modalInstance','Ale
     // console.log('Loading this task',$scope.task)
 
     var taskData = {
+      id: $scope.id,
       what: $scope.what,
       user1: $scope.user1,
       user2: $scope.user2,
       type: $scope.type,
-      dt: $scope.dt,
-      tags: $scope.tags[0].text
+      dt: $scope.dt
+      // tags: $scope.tags[0].text
     }
 
-    $http.put('/api/user/'+UserService.currentUser.id+'/tasks/'+$scope.task, taskData)
+    $http.put('/api/user/'+UserService.currentUser.id+'/tasks/'+$scope.id, taskData)
       .success(function(data){
         AlertService.add('success','The task has been updated');
         $modalInstance.close(data);
