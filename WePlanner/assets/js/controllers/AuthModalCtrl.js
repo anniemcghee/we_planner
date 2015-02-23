@@ -1,4 +1,4 @@
-app.controller('AuthModalCtrl', ['$scope','$http','$modalInstance','AlertService', 'UserService','TimelineService', function($scope, $http, $modalInstance, AlertService, UserService, TimelineService){
+app.controller('AuthModalCtrl', ['$scope','$http','$location','$modalInstance','AlertService', 'UserService','TimelineService', function($scope, $http, $location, $modalInstance, AlertService, UserService, TimelineService){
 //DATE PICKER ACTION IS BELOW
    $scope.today = function() {
     $scope.dt = new Date();
@@ -38,31 +38,7 @@ app.controller('AuthModalCtrl', ['$scope','$http','$modalInstance','AlertService
 //END OF DATE PICKER
   $scope.userId = UserService.currentUser.id
 //for the use of signup add wedding task ONLY
-  $scope.addNew = function(){
-// date / who / what / tags / type
 
-
-    var taskData = {
-      type:"Appointment",
-      dt:$scope.wedding,
-      // user1:$scope.user1,
-      // user2:$scope.user2,
-      what:"Get married!"
-      // tags:$scope.tags
-    }
-
-//need routeParams to pull in user's id for user/id/tasks/new?
-    $http.post('/api/user/'+$scope.userId+'/tasks', taskData)
-    .success(function(data){
-      alert('Wedding created')
-      // AlertService.add('success','Task has been created.');
-      // $modalInstance.close(data);
-    })
-    .error(function(err){
-      alert(err);
-    })
-
-  }
   //end of wedding task adder
 
 
@@ -74,8 +50,9 @@ app.controller('AuthModalCtrl', ['$scope','$http','$modalInstance','AlertService
       if(err){
         alert(err);
       } else if(data.user){
-        AlertService.add('success','Welcome!');
+        // AlertService.add('success','Welcome!');
         $modalInstance.close();
+        $location.path('/dashboard')
       } else {
         alert(data.error);
       }
@@ -101,15 +78,13 @@ app.controller('AuthModalCtrl', ['$scope','$http','$modalInstance','AlertService
 
     $http.post('/api/user',signupData)
     .success(function(data){
-
       $scope.login();
-      console.log("LOGGED IN USER IS: ",$scope.userId)
       //ADD A NEW TASK TO INITIALIZE TIMELINE
     })
     .error(function(err){
       alert(err);
     })
-      $scope.addNew();
+
   }
 
 

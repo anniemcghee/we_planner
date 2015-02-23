@@ -44,6 +44,9 @@ app.controller('EditTaskIndexModalCtrl', ['$scope','$http','$modalInstance','Ale
   $scope.format = $scope.formats[0];
 //END OF DATE PICKER
 
+  $scope.userOne = UserService.currentUser.userOne
+  $scope.userTwo = UserService.currentUser.userTwo
+
   $scope.what = task.headline;
   $scope.user1 = task.user1;
   $scope.user2 = task.user2;

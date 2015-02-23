@@ -1,6 +1,6 @@
 <!-- get all this from add new task data BUT auto populate -->
 <div class="modal-header">
-  <h3 class="modal-title">Edit Task: {{id}}</h3>
+  <h3 class="modal-title">Edit Task:</h3>
 </div>
 <!-- <alerts></alerts> -->
 <div class="modal-body">
@@ -39,8 +39,8 @@
           <label>Who</label>
           <!-- icons for person 1 or person 2 or both-->
           <div>
-              <input type="checkbox" ng-model="user1" ng-false-value="false" value="user1"> User 1
-              <input type="checkbox" ng-model="user2" ng-false-value="false" value="user2"> User 2 <br/>
+              <input type="checkbox" ng-model="user1" ng-false-value="false" value="user1"> {{userOne}}
+              <input type="checkbox" ng-model="user2" ng-false-value="false" value="user2"> {{userTwo}}<br/>
           </div>
           <!-- <input ng-model="who" type="text" class="form-control" required> -->
         </div>

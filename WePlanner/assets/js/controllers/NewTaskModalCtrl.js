@@ -49,8 +49,8 @@ app.controller('NewTaskModalCtrl', ['$scope','$http','$modalInstance','$routePar
     var taskData = {
       type:$scope.type,
       dt:$scope.dt,
-      user1:$scope.userOne,
-      user2:$scope.userTwo,
+      user1:$scope.user1,
+      user2:$scope.user2,
       what:$scope.what,
       tags:$scope.tags
     }

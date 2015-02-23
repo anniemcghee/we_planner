@@ -1200,19 +1200,19 @@ if(typeof VMM != 'undefined' && typeof VMM.Date == 'undefined') {
 			month: "mmmm yyyy",
 			full_short: "mmm d",
 			full: "mmmm d',' yyyy",
-			time_short: "h:MM:ss TT",
-			time_no_seconds_short: "h:MM TT",
-			time_no_seconds_small_date: "h:MM TT'<br/><small>'mmmm d',' yyyy'</small>'",
-			full_long: "mmm d',' yyyy 'at' hh:MM TT",
-			full_long_small_date: "hh:MM TT'<br/><small>mmm d',' yyyy'</small>'"
+			// time_short: "h:MM:ss TT",
+			// time_no_seconds_short: "h:MM TT",
+			time_no_seconds_small_date: "'<br/><small>'mmmm d',' yyyy'</small>'",
+			full_long: "mmm d',' yyyy",
+			full_long_small_date: "'<br/><small>mmm d',' yyyy'</small>'"
 		},
 
 		month: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
 		month_abbr: ["Jan.", "Feb.", "March", "April", "May", "June", "July", "Aug.", "Sept.", "Oct.", "Nov.", "Dec."],
 		day: ["Sunday","Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
 		day_abbr: ["Sun.", "Mon.", "Tues.", "Wed.", "Thurs.", "Fri.", "Sat."],
-		hour: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
-		hour_suffix: ["am"],
+		// hour: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+		// hour_suffix: ["am"],
 
 		//B.C.
 		bc_format: {
@@ -1221,10 +1221,10 @@ if(typeof VMM != 'undefined' && typeof VMM.Date == 'undefined') {
 			month: "mmmm yyyy",
 			full_short: "mmm d",
 			full: "mmmm d',' yyyy",
-			time_no_seconds_short: "h:MM TT",
-			time_no_seconds_small_date: "dddd', 'h:MM TT'<br/><small>'mmmm d',' yyyy'</small>'",
-			full_long: "dddd',' mmm d',' yyyy 'at' hh:MM TT",
-			full_long_small_date: "hh:MM TT'<br/><small>'dddd',' mmm d',' yyyy'</small>'"
+			// time_no_seconds_short: "h:MM TT",
+			time_no_seconds_small_date: "dddd', ''<br/><small>'mmmm d',' yyyy'</small>'",
+			full_long: "dddd',' mmm d',' yyyy",
+			full_long_small_date: "'<br/><small>'dddd',' mmm d',' yyyy'</small>'"
 		},
 
 		setLanguage: function(lang) {
@@ -1355,31 +1355,31 @@ if(typeof VMM != 'undefined' && typeof VMM.Date == 'undefined') {
 
 					if (d.match("hours")) {
 						date.setHours(now.getHours());
-						p.hour = true;
+						p.hour = false;
 					}
 					if (d.match("minutes")) {
 						date.setHours(now.getHours());
 						date.setMinutes(now.getMinutes());
-						p.hour = true;
-						p.minute = true;
+						p.hour = false;
+						p.minute = false;
 					}
 					if (d.match("seconds")) {
 						date.setHours(now.getHours());
 						date.setMinutes(now.getMinutes());
 						date.setSeconds(now.getSeconds());
-						p.hour = true;
-						p.minute = true;
-						p.second = true;
+						p.hour = false;
+						p.minute = false;
+						p.second = false;
 					}
 					if (d.match("milliseconds")) {
 						date.setHours(now.getHours());
 						date.setMinutes(now.getMinutes());
 						date.setSeconds(now.getSeconds());
 						date.setMilliseconds(now.getMilliseconds());
-						p.hour = true;
-						p.minute = true;
-						p.second = true;
-						p.millisecond = true;
+						p.hour = false;
+						p.minute = false;
+						p.second = false;
+						p.millisecond = false;
 					}
 				} else if (d.length <= 8) {
 					p.year = true;
@@ -1398,22 +1398,22 @@ if(typeof VMM != 'undefined' && typeof VMM.Date == 'undefined') {
 							time_array = time_parse[1].split(":");
 							if (time_array[0] >= 1) {
 								date.setHours(time_array[0]);
-								p.hour = true;
+								p.hour = false;
 							}
 							if (time_array[1] >= 1) {
 								date.setMinutes(time_array[1]);
-								p.minute = true;
+								p.minute = false;
 							}
 							if (time_array[2] >= 1) {
 								date.setSeconds(time_array[2]);
 								if (time_array[2] >= 1) {
-									p.second = true;
+									p.second = false;
 								}
 							}
 							if (time_array[3] >= 1) {
 								date.setMilliseconds(time_array[3]);
 								if (time_array[3] >= 1) {
-									p.millisecond = true;
+									p.millisecond = false;
 								}
 							}
 						}
@@ -1436,13 +1436,13 @@ if(typeof VMM != 'undefined' && typeof VMM.Date == 'undefined') {
 						p.year = true;
 						p.month = true;
 						p.day = true;
-						p.hour = true;
-						p.minute = true;
+						p.hour = false;
+						p.minute = false;
 						if (date.getSeconds() >= 1) {
-							p.second = true;
+							p.second = false;
 						}
 						if (date.getMilliseconds() >= 1) {
-							p.millisecond = true;
+							p.millisecond = false;
 						}
 					}
 				} else {
@@ -1456,13 +1456,13 @@ if(typeof VMM != 'undefined' && typeof VMM.Date == 'undefined') {
 					p.year = true;
 					p.month = true;
 					p.day = true;
-					p.hour = true;
-					p.minute = true;
+					p.hour = false;
+					p.minute = false;
 					if (date.getSeconds() >= 1) {
-						p.second = true;
+						p.second = false;
 					}
 					if (date.getMilliseconds() >= 1) {
-						p.millisecond = true;
+						p.millisecond = false;
 					}
 
 				}
@@ -9331,7 +9331,7 @@ if(typeof VMM.Timeline != 'undefined' && typeof VMM.Timeline.TimeNav == 'undefin
 					var plural = (tag_counts[tags[k]] -1) > 1 ? 's' : '';
 					plural = (tag_counts[tags[k]] -1) <= 0 ? 's' : plural;
 
-					VMM.appendElement(tag_element, "<div><h3>" + tags[k] + " (" + (tag_counts[tags[k]] - 1) + " item" + plural + ")</h3></div>");
+					VMM.appendElement(tag_element, "<div><h3>" + tags[k] + "</h3></div>");
 				}
 			}
 

@@ -25,6 +25,16 @@ app.factory('TimelineService', ['UserService', '$http', function(UserService, $h
     add: function(task){
       var self= this;
 
+      var users = [];
+
+        if (task.user1 === true && task.user2 === true) {
+          users.push(UserService.currentUser.userOne, UserService.currentUser.userTwo);
+        } else if (task.user1 === true) {
+          users.push(UserService.currentUser.userOne);
+        } else {
+          users.push(UserService.currentUser.userTwo);
+        };
+
       console.log("adding task", task);
       self.tasks.push({
             "id": task.id,
@@ -32,8 +42,8 @@ app.factory('TimelineService', ['UserService', '$http', function(UserService, $h
             "startDate":task.dt,
             "endDate":task.dt,
             "headline":task.what,
-            "text":[task.user1, task.user2],
-            // "tag":task.tags[0].text
+            "text":users,
+            "tag":task.type
           });
       this.sort();
     },
@@ -56,8 +66,15 @@ app.factory('TimelineService', ['UserService', '$http', function(UserService, $h
             "startDate":data[i].dt,
             "endDate":data[i].dt,
             "headline":data[i].what,
-            "text":[data[i].user1, data[i].user2],
-            // "tag":data[i].tags[0].text
+            "text": '',
+            // (if (data[i].user1 && data[i].user2 === true) {
+            //     "text": UserService.currentUser.userOne+' & '+UserService.currentUser.userTwo
+            //   } else if (data[i].user2 === true) {
+            //     "text":UserService.currentUser.userTwo
+            //   } else {
+            //     "text":UserService.currentUser.userOne
+            //   }),
+            "tag":data[i].type
           })
 
         }

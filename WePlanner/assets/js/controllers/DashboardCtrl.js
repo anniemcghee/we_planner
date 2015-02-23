@@ -1,5 +1,7 @@
 app.controller('DashboardCtrl',['$scope','$http','$modal', 'AlertService','UserService', '$location', 'TimelineService', '$timeout', function($scope, $http, $modal, AlertService, UserService, $location, TimelineService, $timeout) {
 
+  console.log('dashboard ctrl v2')
+
   if(!UserService.currentUser){
     $location.path('/');
   }
@@ -13,11 +15,46 @@ app.controller('DashboardCtrl',['$scope','$http','$modal', 'AlertService','UserS
   $scope.TimelineService = TimelineService;
 
 
-  $scope.TimelineService.get(function(err,data) {
-    $scope.dates = TimelineService.tasks;
-    $scope.timelineValues = {index: 0};
+  var addNew = function(){
+//this creates the wedding event upon signup
 
-    })
+      var taskData = {
+        type:"Appointment",
+        dt:UserService.currentUser.wedding,
+        user1:true,
+        user2:true,
+        what:"Get married!"
+        // tags:$scope.tags
+      }
+
+      $http.post('/api/user/'+UserService.currentUser.id+'/tasks', taskData)
+      .success(function(data){
+        alert('Wedding created');
+        loadTasks();
+        // AlertService.add('success','Task has been created.');
+        // $modalInstance.close(data);
+      })
+      .error(function(err){
+        alert('there was an error');
+        console.log('error',err);
+      })
+
+    }
+
+
+    var loadTasks = function(){
+      $scope.TimelineService.get(function(err,data) {
+        if(TimelineService.tasks.length < 1){
+          addNew();
+        }else{
+          $scope.dates = TimelineService.tasks;
+          $scope.timelineValues = {index: 0};
+        }
+
+
+      })
+    }
+    loadTasks();
 
   $scope.$watchCollection('TimelineService', function(){
 
@@ -78,9 +115,9 @@ app.controller('DashboardCtrl',['$scope','$http','$modal', 'AlertService','UserS
     })
 
     modalInstance.result.then(function(updatedTask){
-      TimelineService.get(function() { $scope.timelineValues = {index: TimelineService.indexOf(updatedTask) }})
+      TimelineService.get(function() { $scope.timelineValues = {index: TimelineService.indexOf(updatedTask)}})
 
-      $scope.timelineValues = {index: TimelineService.indexOf(updatedTask) };
+      $scope.timelineValues = {index: TimelineService.indexOf(updatedTask)-1 };
 
     })
   }
