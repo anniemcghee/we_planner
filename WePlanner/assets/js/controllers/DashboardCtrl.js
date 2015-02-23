@@ -56,7 +56,7 @@ app.controller('DashboardCtrl',['$scope','$http','$modal', 'AlertService','UserS
     }
     loadTasks();
 
-  $scope.$watchCollection('TimelineService', function(){
+  $scope.$watchCollection('TimelineService.tasks', function(){
 
 // $scope.taco = $scope.timelineValues
 
@@ -92,8 +92,8 @@ app.controller('DashboardCtrl',['$scope','$http','$modal', 'AlertService','UserS
     modalInstance.result.then(function (data) {
       TimelineService.add(data);
       // debugger;
-      TimelineService.get(function() { $scope.timelineValues = {index: TimelineService.indexOf(data) }})
-      $scope.timelineValues = {index: TimelineService.indexOf(data) };
+      // TimelineService.get(function() { $scope.timelineValues = {index: TimelineService.indexOf(data) }})
+      $scope.timelineValues = {index: TimelineService.indexOf(data) + 1 };
 
       console.log("New Timeline data from main nav", data);
     })
@@ -115,9 +115,10 @@ app.controller('DashboardCtrl',['$scope','$http','$modal', 'AlertService','UserS
     })
 
     modalInstance.result.then(function(updatedTask){
-      TimelineService.get(function() { $scope.timelineValues = {index: TimelineService.indexOf(updatedTask)}})
-
-      $scope.timelineValues = {index: TimelineService.indexOf(updatedTask)-1 };
+      TimelineService.get(function() {
+       $scope.timelineValues = {index: TimelineService.indexOf(updatedTask)}
+      })
+      // $scope.timelineValues = {index: TimelineService.indexOf(updatedTask) + 1 };
 
     })
   }
@@ -131,13 +132,17 @@ app.controller('DashboardCtrl',['$scope','$http','$modal', 'AlertService','UserS
     $http.delete('api/user/'+UserService.currentUser.id+'/tasks/'+$scope.task.id)
         .success(function(data){
         console.log('Deleted success',data);
+        console.log("Tasks before", TimelineService.tasks.length)
+        TimelineService.remove(idx);
+                console.log("Tasks after", TimelineService.tasks.length)
+
+        $scope.timelineValues = {index: 0 };
+        // TimelineService.get(function() { $scope.timelineValues = {index: TimelineService.indexOf(idx) }})
 
       })
       .error(function(err){
         // alert(err);
       });
-        TimelineService.remove(idx);
-        TimelineService.get(function() { $scope.timelineValues = {index: TimelineService.indexOf(idx) }})
 
 
     // $scope.tasks.splice(idx, 1);

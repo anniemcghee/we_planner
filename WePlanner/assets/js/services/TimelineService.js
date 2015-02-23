@@ -49,7 +49,6 @@ app.factory('TimelineService', ['UserService', '$http', function(UserService, $h
     },
     remove: function(idx){
       var self= this;
-
       self.tasks.splice(idx, 1);
     },
     get: function(callback){
@@ -59,14 +58,27 @@ app.factory('TimelineService', ['UserService', '$http', function(UserService, $h
 
         self.tasks = [];
 
+
+
         for (i = 0; i < data.length; i++) {
+        var users = [];
+
+          if (data[i].user1 === true && data[i].user2 === true) {
+            users.push(UserService.currentUser.userOne + ' & ' + UserService.currentUser.userTwo);
+          } else if (data[i].user1 === true) {
+            users.push(UserService.currentUser.userOne);
+          } else {
+            users.push(UserService.currentUser.userTwo);
+          };
+
+
           self.tasks.push({
             "id": data[i].id,
             "type":data[i].type,
             "startDate":data[i].dt,
             "endDate":data[i].dt,
             "headline":data[i].what,
-            "text": '',
+            "text": users,
             // (if (data[i].user1 && data[i].user2 === true) {
             //     "text": UserService.currentUser.userOne+' & '+UserService.currentUser.userTwo
             //   } else if (data[i].user2 === true) {

@@ -1,17 +1,17 @@
 app.controller('AuthModalCtrl', ['$scope','$http','$location','$modalInstance','AlertService', 'UserService','TimelineService', function($scope, $http, $location, $modalInstance, AlertService, UserService, TimelineService){
-//DATE PICKER ACTION IS BELOW
-   $scope.today = function() {
+  //DATEPICKER INFO
+
+  $scope.today = function() {
     $scope.dt = new Date();
   };
+
   $scope.today();
 
   $scope.clear = function () {
     $scope.dt = null;
   };
-  // $scope.showWeeks=false;
-  // $scope.maxDate = '01-01-2020'
 
-  // // Disable weekend selection
+  // Disable weekend selection
   // $scope.disabled = function(date, mode) {
   //   return ( mode === 'day' && ( date.getDay() === 0 || date.getDay() === 6 ) );
   // };
@@ -35,6 +35,7 @@ app.controller('AuthModalCtrl', ['$scope','$http','$location','$modalInstance','
 
   $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
   $scope.format = $scope.formats[0];
+//END OF DATE PICKER
 //END OF DATE PICKER
   $scope.userId = UserService.currentUser.id
 //for the use of signup add wedding task ONLY

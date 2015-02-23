@@ -1,17 +1,21 @@
 app.controller('NewTaskModalCtrl', ['$scope','$http','$modalInstance','$routeParams','AlertService', 'UserService', function($scope, $http, $modalInstance, $routeParams, AlertService, UserService){
 
-//datepicker ctrl info goes here
-  $scope.userOne = UserService.currentUser.userOne;
-  $scope.userTwo = UserService.currentUser.userTwo;
+  //DATEPICKER INFO
 
   $scope.today = function() {
     $scope.dt = new Date();
   };
+
   $scope.today();
 
   $scope.clear = function () {
     $scope.dt = null;
   };
+
+  // Disable weekend selection
+  // $scope.disabled = function(date, mode) {
+  //   return ( mode === 'day' && ( date.getDay() === 0 || date.getDay() === 6 ) );
+  // };
 
   $scope.toggleMin = function() {
     $scope.minDate = $scope.minDate ? null : new Date();
@@ -32,6 +36,7 @@ app.controller('NewTaskModalCtrl', ['$scope','$http','$modalInstance','$routePar
 
   $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
   $scope.format = $scope.formats[0];
+//END OF DATE PICKER
 
 //tags input info here
   $scope.tags = [];

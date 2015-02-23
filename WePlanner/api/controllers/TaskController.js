@@ -56,7 +56,9 @@ module.exports = {
 
     Task.destroy({where:{owner:req.params.id , id:req.params.taskid}})
     .exec(function deleteCB(err){
+
         console.log('The record has been deleted');
+        res.send(200);
     });
   }
 
