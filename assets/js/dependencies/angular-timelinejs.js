@@ -8,7 +8,7 @@
  * instructions.
  */
 angular.module('pippTimelineDirectives', [])
-.directive('pippTimelineJS', function ($rootScope, $timeout) {
+.directive('pippTimelineJS', ['$rootScope','$timeout',function ($rootScope, $timeout) {
   return {
     template: '<div id="pipp-timeline"></div>',
     restrict: 'E',
@@ -203,4 +203,4 @@ angular.module('pippTimelineDirectives', [])
 
     }
   };
-});
+}]);

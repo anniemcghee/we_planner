@@ -1,40 +1,26 @@
 <div class="modal-header">
-  <h3 class="modal-title">Sign Up</h3>
+  <h3 class="modal-title row text-center">Sign Up</h3>
 </div>
 <!-- <alerts></alerts> -->
 <div class="modal-body">
   <div class="row">
     <div class="col-md-6">
       <form ng-submit="signup()">
-        <div class="form-group">
+        <h4><div class="form-group">
           <label>Couple's Last Name</label>
           <input ng-model="lastName" type="text" class="form-control" placeholder="Choose one or hyphenate!">
         </div>
         <div class="form-group">
-          <label>Person Name 1</label>
-          <input ng-model="userOne" type="text" class="form-control">
+          <label>Person 1</label>
+          <input ng-model="userOne" type="text" class="form-control" placeholder="First name only">
         </div>
         <div class="form-group">
-          <label>Person Name 2</label>
-          <input ng-model="userTwo" type="text" class="form-control">
-        </div>
-        <div>
-          <label>Wedding Date</label>
-
-          <pre><em>{{wedding | date:'fullDate' }}</em></pre>
-
-          <div class="row">
-            <div class="col-md-6">
-              <p class="input-group">
-                <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="wedding" is-open="opened" min-date="minDate" max-date="'2020-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
-                <span class="input-group-btn">
-                  <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-                </span>
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="form-group">
+          <label>Person 2</label>
+          <input ng-model="userTwo" type="text" class="form-control" placeholder="First name only">
+        </div></h4>
+    </div> <!-- end of column -->
+    <div class="col-md-6">
+        <h4><div class="form-group">
           <label>E-mail</label>
           <input ng-model="email" type="text" class="form-control" required>
         </div>
@@ -45,8 +31,25 @@
         <div class="form-group">
           <label>Password Confirmation</label>
           <input ng-model="signupPasswordConfirmation" type="password" class="form-control" required>
+        </div></h4>
+    </div> <!-- end of column -->
+      <div class="row text-center">
+
+          <h4><label>Wedding Date</label>
+
+          <pre ng-show="wedding"><em>{{wedding | date:'fullDate' }}</em></pre></h4>
+
+              <p class="input-group" class="form-control" datepicker-popup="{{format}}" ng-model="wedding" is-open="opened" min-date="minDate" max-date="'2020-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" show-button-bar="false" show-weeks="false" ng-required="true" close-text="Close" />
+                <span class="input-group-btn">
+                  <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                </span>
+              </p>
+
         </div>
-        <input type="submit" value="Signup" class="btn btn-primary">
+        <hr>
+        <div class="row text-center">
+        <h4><input type="submit" value="Signup" class="btn btn-primary"></h4>
+      </div>
       </form>
     </div>
   </div>

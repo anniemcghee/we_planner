@@ -6,6 +6,7 @@ app.controller('EditTaskIndexModalCtrl', ['$scope','$http','$modalInstance','Ale
 
   // console.log('From edit task modal, scope.task is:',$scope.task);
 
+  $scope.letterLimit = 20
 
   //DATEPICKER INFO
 

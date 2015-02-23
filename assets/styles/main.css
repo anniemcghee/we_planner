@@ -36,6 +36,24 @@ h4 {
   font-family: 'Cardo', serif;
 }
 
+h5 {
+  font-family: 'Cardo', serif;
+}
+
+.input-group-addon {
+  border-style: none;
+  border: none;
+  background: transparent;
+  font-family: 'Cardo', serif;
+}
+
+pre {
+  border-style: none;
+  border: none;
+  background: transparent;
+  font-family: 'Cardo', serif;
+}
+
 .navbar {
   border-top: none;
   background: transparent;

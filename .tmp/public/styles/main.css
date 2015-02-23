@@ -1,0 +1,86 @@
+/*#pipp-timeline {
+  width: 1140px;
+  height: 600px;
+}*/
+
+.btn {
+  border-color: #19B5BC;
+  border-width: 1px;
+  background: transparent;
+  color: #19B5BC;
+}
+
+.btn:hover {
+  background: transparent;
+  border-width: 2px;
+  color: #19B5BC;
+  border-color: #19B5BC;
+}
+
+h1.logo {
+  font-family: 'Montserrat', sans-serif;
+  color: #19B5BC;
+  font-size: 70px;
+  font-weight: 100px;
+}
+
+h2 {
+  font-family: 'Cardo', serif;
+}
+
+h3 {
+  font-family: 'Cardo', serif;
+}
+
+h4 {
+  font-family: 'Cardo', serif;
+}
+
+h5 {
+  font-family: 'Cardo', serif;
+}
+
+.input-group-addon {
+  border-style: none;
+  border: none;
+  background: transparent;
+  font-family: 'Cardo', serif;
+}
+
+pre {
+  border-style: none;
+  border: none;
+  background: transparent;
+  font-family: 'Cardo', serif;
+}
+
+.navbar {
+  border-top: none;
+  background: transparent;
+}
+
+.page-header {
+  border-bottom: none;
+}
+
+
+/*TIMELINE STYLING*/
+/*timenav-line {
+  color:#19B5BC;
+}
+
+timenav-background {
+  color: ???;
+}*/
+/*h2.start (headline)
+
+div.icon (arrows for carousel)
+
+div.flag-content (flags)
+
+h3 (inside flags)
+
+for each task:
+h2.date
+h3
+p*/

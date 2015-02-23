@@ -1,0 +1,29 @@
+<div class="modal-header">
+  <h3 class="modal-title">Edit Task</h3>
+</div>
+<!-- <alerts></alerts> -->
+<!-- here we have the option to add user1 and user2 names, wedding date, etc -->
+<div class="modal-body">
+  <div class="row">
+      <table class="table">
+        <thead>
+          <th>Date</th>
+          <th>Headline</th>
+          <th>Buttons</th>
+        </thead>
+        <tbody ng-repeat="task in tasks">
+          <tr>
+            <td>{{task.endDate}}</td>
+            <td>{{task.headline}}</td>
+            <td>
+              <button class="btn btn-warning" ng-click="editTask($index)">Edit</button>
+              <button class="btn btn-danger" ng-click="deleteTask($index)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
+</div>
+
+
+

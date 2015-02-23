@@ -29,12 +29,12 @@ timenav.ya/*
 .vco-storyjs input[type="search"]{-webkit-appearance:textfield;-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box}
 .vco-storyjs input[type="search"]::-webkit-search-decoration{-webkit-appearance:none}
 .vco-storyjs textarea{overflow:auto;vertical-align:top}
-.vco-storyjs{font-family:"Georgia",Times New Roman,Times,serif;}.vco-storyjs .twitter,.vco-storyjs .vcard,.vco-storyjs .messege,.vco-storyjs .credit,.vco-storyjs .caption,.vco-storyjs .zoom-in,.vco-storyjs .zoom-out,.vco-storyjs .back-home,.vco-storyjs .time-interval div,.vco-storyjs .time-interval-major div,.vco-storyjs .nav-container{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif !important}
-.vco-storyjs h1.date,.vco-storyjs h2.date,.vco-storyjs h3.date,.vco-storyjs h4.date,.vco-storyjs h5.date,.vco-storyjs h6.date{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif !important}
-.vco-storyjs .timenav h1,.vco-storyjs .flag-content h1,.vco-storyjs .era h1,.vco-storyjs .timenav h2,.vco-storyjs .flag-content h2,.vco-storyjs .era h2,.vco-storyjs .timenav h3,.vco-storyjs .flag-content h3,.vco-storyjs .era h3,.vco-storyjs .timenav h4,.vco-storyjs .flag-content h4,.vco-storyjs .era h4,.vco-storyjs .timenav h5,.vco-storyjs .flag-content h5,.vco-storyjs .era h5,.vco-storyjs .timenav h6,.vco-storyjs .flag-content h6,.vco-storyjs .era h6{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif !important}
-.vco-storyjs p,.vco-storyjs blockquote,.vco-storyjs blockquote p,.vco-storyjs .twitter blockquote p{font-family:"Georgia",Times New Roman,Times,serif !important}
-.vco-storyjs .vco-feature h1,.vco-storyjs .vco-feature h2,.vco-storyjs .vco-feature h3,.vco-storyjs .vco-feature h4,.vco-storyjs .vco-feature h5,.vco-storyjs .vco-feature h6{font-family:"Georgia",Times New Roman,Times,serif}
-.timeline-tooltip{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif}
+.vco-storyjs{font-family:"Cardo",Montserrat,Times,serif;}.vco-storyjs .twitter,.vco-storyjs .vcard,.vco-storyjs .messege,.vco-storyjs .credit,.vco-storyjs .caption,.vco-storyjs .zoom-in,.vco-storyjs .zoom-out,.vco-storyjs .back-home,.vco-storyjs .time-interval div,.vco-storyjs .time-interval-major div,.vco-storyjs .nav-container{font-family:"Cardo",Helvetica,Arial,sans-serif !important}
+.vco-storyjs h1.date,.vco-storyjs h2.date,.vco-storyjs h3.date,.vco-storyjs h4.date,.vco-storyjs h5.date,.vco-storyjs h6.date{font-family:"Cardo",Helvetica,Arial,sans-serif !important}
+.vco-storyjs .timenav h1,.vco-storyjs .flag-content h1,.vco-storyjs .era h1,.vco-storyjs .timenav h2,.vco-storyjs .flag-content h2,.vco-storyjs .era h2,.vco-storyjs .timenav h3,.vco-storyjs .flag-content h3,.vco-storyjs .era h3,.vco-storyjs .timenav h4,.vco-storyjs .flag-content h4,.vco-storyjs .era h4,.vco-storyjs .timenav h5,.vco-storyjs .flag-content h5,.vco-storyjs .era h5,.vco-storyjs .timenav h6,.vco-storyjs .flag-content h6,.vco-storyjs .era h6{font-family:"Cardo",Helvetica,Arial,sans-serif !important}
+.vco-storyjs p,.vco-storyjs blockquote,.vco-storyjs blockquote p,.vco-storyjs .twitter blockquote p{font-family:"Cardo",Montserrat,Times,serif !important}
+.vco-storyjs .vco-feature h1,.vco-storyjs .vco-feature h2,.vco-storyjs .vco-feature h3,.vco-storyjs .vco-feature h4,.vco-storyjs .vco-feature h5,.vco-storyjs .vco-feature h6{font-family:"Cardo",Montserrat,Times,serif}
+.timeline-tooltip{font-family:"Cardo",Helvetica,Arial,sans-serif}
 .vco-storyjs{font-size:15px;font-weight:normal;line-height:20px;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%;}.vco-storyjs p{font-size:15px;font-weight:normal;line-height:20px;margin-bottom:20px;color:#666}.vco-storyjs p small{font-size:12px;line-height:17px}
 .vco-storyjs p:first-child{margin-top:20px}
 .vco-storyjs .vco-navigation p{color:#999}
@@ -82,7 +82,7 @@ timenav.ya/*
 .fancybox-outer,.fancybox-inner{position:relative}
 .fancybox-inner{overflow:hidden}
 .fancybox-type-iframe .fancybox-inner{-webkit-overflow-scrolling:touch}
-.fancybox-error{color:#444;font:14px/20px "Helvetica Neue",Helvetica,Arial,sans-serif;margin:0;padding:15px;white-space:nowrap}
+.fancybox-error{color:#444;font:14px/20px "Cardo",Helvetica,Arial,sans-serif;margin:0;padding:15px;white-space:nowrap}
 .fancybox-image,.fancybox-iframe{display:block;width:100%;height:100%}
 .fancybox-image{max-width:100%;max-height:100%}
 .fancybox-close,.fancybox-prev span,.fancybox-next span{background-image:url('fancybox_sprite.png')}
@@ -103,7 +103,7 @@ timenav.ya/*
 .fancybox-overlay{position:absolute;top:0;left:0;overflow:hidden;display:none;z-index:8010;background:url('overlay.png')}
 .fancybox-overlay-fixed{position:fixed;bottom:0;right:0}
 .fancybox-lock .fancybox-overlay{overflow:auto;overflow-y:scroll}
-.fancybox-title{visibility:hidden;font:normal 13px/20px "Helvetica Neue",Helvetica,Arial,sans-serif;position:relative;text-shadow:none;z-index:8050}
+.fancybox-title{visibility:hidden;font:normal 13px/20px "Cardo",Helvetica,Arial,sans-serif;position:relative;text-shadow:none;z-index:8050}
 .fancybox-opened .fancybox-title{visibility:visible}
 .fancybox-title-float-wrap{position:absolute;bottom:0;right:50%;margin-bottom:-35px;z-index:8050;text-align:center}.fancybox-title-float-wrap .child{display:inline-block;margin-right:-100%;padding:2px 20px;background:transparent;background:rgba(0,0,0,0.8);-webkit-border-radius:15px;-moz-border-radius:15px;border-radius:15px;text-shadow:0 1px 2px #222;color:#fff;font-weight:bold;line-height:24px;white-space:nowrap}
 .fancybox-title-outside-wrap{position:relative;margin-top:10px;color:#fff}

@@ -25,7 +25,7 @@ module.exports = {
         connection: 'mongoDbServer',
         migrate: 'alter'
     }
-};
+
 
 
 
