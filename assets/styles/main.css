@@ -12,9 +12,13 @@
 
 .btn:hover {
   background: transparent;
-  border-width: 2px;
+  border-width: 1.2px;
   color: #19B5BC;
   border-color: #19B5BC;
+}
+
+.btn:focus {
+  background: transparent;
 }
 
 h1.logo {
@@ -72,9 +76,7 @@ a:focus {
   text-decoration: none;
 }
 
-.dropdown:hover {
-  background: transparent;
-}
+
 
 /*PAGE HEADER AND NAVBAR*/
 
@@ -152,7 +154,22 @@ padding-top: 30px;
 }
 */
 
+/*div {
+  border: 2px solid #f0f;
+}*/
 
+/*.vco-slider {
+  height: 100px !important;
+}*/
+
+.vco-timeline, .vco-storyjs, .vco-notouch, .vco-skinny, .vco-feature{
+        height: 300px;
+}
+
+#pipp-timeline {
+  margin-top: -50px;
+  z-index: -999;
+}
 
 
 /*TIMELINE STYLING*/
