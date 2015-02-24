@@ -1,11 +1,9 @@
 <div ng-app="WePlanner">
 
-<div class="container">
 <div class="page-header">
-  <div class="row text-center">
+  <div class="row text-center logobar">
   <img src="/images/we_planner_logo.png"><h1 class="logo"><strong>WE</strong> PLANNER</h1>
   </div>
-</div>
 </div>
 
   <nav class="navbar navbar-default" ng-controller="MainNavCtrl">
@@ -26,7 +24,6 @@
       <div collapse="navCollapsed" class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
           <li ng-class="{active:isActive('/about')}"><a href="/about">About</a></li>
-          <li ng-class="{active:isActive('/faq')}"><a href="/faq">FAQ</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
         <li ng-hide="currentUser"><a ng-click="showLogin()">Login</a></li>
@@ -48,7 +45,7 @@
     </div><!-- /.container-fluid -->
   </nav>
 
-  <div class="container">
+  <div class="home">
 
     <ng-view></ng-view>
 
