@@ -29,7 +29,7 @@ app.controller('DashboardCtrl',['$scope','$http','$modal', 'AlertService','UserS
 
       $http.post('/api/user/'+UserService.currentUser.id+'/tasks', taskData)
       .success(function(data){
-        alert('Wedding created');
+        // alert('Wedding created');
         loadTasks();
         // AlertService.add('success','Task has been created.');
         // $modalInstance.close(data);
