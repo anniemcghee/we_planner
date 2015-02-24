@@ -8,9 +8,9 @@
 
   <nav class="navbar navbar-default" ng-controller="MainNavCtrl">
     <div class="container-fluid">
-      <!-- Brand and toggle get grouped for better mobile display -->
+
       <div class="navbar-header">
-      <a href="/dashboard"><img src="/images/we_planner_logo.png"><h1 class="logo"><strong>WE</strong> PLANNER</h1></a>
+      <a href="/dashboard"><img src="/images/we_planner_logo.png"><h1 class="logo"><strong>  WE</strong> PLANNER</h1></a>
 
         <button ng-click="navCollapsed=!navCollapsed" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
           <span class="sr-only">Toggle navigation</span>
@@ -20,28 +20,12 @@
         </button>
       </div>
 
-<!-- things to deal with: alerts - navCollapsed - isActive - search() - searchTerm - about - faq - ctrl -->
-
-      <!-- Collect the nav links, forms, and other content for toggling -->
       <div collapse="navCollapsed" class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-          <li ng-class="{active:isActive('/about')}"><a href="/about">About</a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-        <li ng-hide="currentUser"><a ng-click="showLogin()">Login</a></li>
-        <li ng-hide="currentUser"><a ng-click="showSignup()">Signup</a></li>
-        <li ng-show="currentUser" class="dropdown" dropdown>
-          <a href="#" dropdown-toggle class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">The {{currentUser.lastName}} Wedding<span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="/dashboard">View Timeline</a></li>
-            <!-- link to add new task modal -->
-            <li><a ng-click="showNew()">Add New Task</a></li>
-  <!--           <li><a ng-click="showEdit()">Settings</a></li> -->
-            <li class="divider"></li>
-            <li><a href="#" ng-click="logout()">Logout</a></li>
-          </ul>
-        </li>
-      </ul>
+        <div class="nav navbar-nav navbar-right">
+          <button class="btn btn-xs auth-btn" ng-hide="currentUser" ng-click="showLogin()">Login </button>
+          <button class="btn btn-xs auth-btn" ng-hide="currentUser" ng-click="showSignup()"> Signup</button>
+          <button class="btn btn-xs auth-btn" ng-show="currentUser" ng-click="logout()">Logout</button>
+        </div>
 
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->

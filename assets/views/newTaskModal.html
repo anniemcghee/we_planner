@@ -1,5 +1,5 @@
 <div class="modal-header">
-  <h3 class="modal-title">Add a Task</h3>
+  <h3 class="modal-title row text-center">Add a Task</h3>
 </div>
 <!-- <alerts></alerts> -->
 <div class="modal-body">
@@ -7,11 +7,9 @@
     <form ng-submit="addNew()">
 <!-- form and ng submit should probably go here -->
       <div class="input-group-addon">
-
           <input type="radio" ng-model="type" value="Milestone">  Milestone
           <input type="radio" ng-model="type" value="Deadline"> Deadline
           <input type="radio" ng-model="type" value="Appointment"> Appointment
-
       </div>
 
     <div class="col-md-6">
@@ -20,41 +18,32 @@
 
       <pre><em>{{dt | date:'fullDate' }}</em></pre>
 
-      <div class="row">
-        <div class="col-md-6">
-          <p class="input-group">
-            <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" min-date="minDate" max-date="'2020-06-22'" datepicker-options="dateOptions" show-button-bar="false" show-weeks="false" ng-required="true" close-text="Close" />
+      <div class="row text-center">
+
+          <p class="input-group" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" min-date="minDate" max-date="'2020-06-22'" datepicker-options="dateOptions" show-button-bar="false" show-weeks="false" ng-required="true" close-text="Close">
             <span class="input-group-btn">
               <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
             </span>
           </p>
-        </div>
+
       </div>
     </div> <!-- end of column -->
 
     <div class="col-md-6">
-
-        <div class="form-group">
-          <label>Who</label>
-          <!-- icons for person 1 or person 2 or both-->
-          <div>
-              <input type="checkbox" ng-model="user1" ng-false-value="false" value="user1"> {{userOne}}
-              <input type="checkbox" ng-model="user2" ng-false-value="false" value="user2"> {{userTwo}}<br/>
+          <div class="form-group">
+            <h5><label>Who</label></h5>
+              <h5><input type="checkbox" ng-model="user1" ng-false-value="false" value="user1"> {{userOne}}
+              <input type="checkbox" ng-model="user2" ng-false-value="false" value="user2"> {{userTwo}}</h5><br/>
           </div>
-          <!-- <input ng-model="who" type="text" class="form-control" required> -->
-        </div>
         <div class="form-group">
-          <label>What</label>
+          <h5><label>What</label></h5>
           <input ng-model="what" type="textarea" class="form-control" required>
         </div>
-         <div class="form-group">
-          <label>Tags</label>
-            <tags-input ng-model="tags">
-              <auto-complete source="loadTags($query)"></auto-complete>
-          </tags-input>
-        </div>
+    </div>
+    <br>
+    <div class="row text-center">
         <input type="submit" value="+" class="btn btn-warning">
       </form>
     </div>
+    </div>
   </div>
-</div>

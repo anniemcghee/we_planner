@@ -4,13 +4,21 @@
 
 
 <div class="container">
-<div class="row text-centered">
+<div class="row text-center">
+      <button class="btn btn-warning btn-lg" ng-click="showNew()">
+            <span class="glyphicon glyphicon-plus"></span>
+      </button>
+      <!-- <div ng-show="timelineValues.index > 0"> -->
+            <button ng-show="timelineValues.index > 0" class="btn btn-warning btn-lg" ng-click="editItem()">
+                  <span class="glyphicon glyphicon-pencil"></span>
+            </button>
 
-      <button class="btn btn-warning" ng-click="showNew()">+</a></li>
-<div ng-show="timelineValues.index > 0" style="position:absolute; z-index:499; margin: 110px 0 0 170px;">
-      <button class="btn btn-warning btn-xs" ng-click="editItem()">Edit</button>
-      <button class="btn btn-danger btn-xs" ng-click="deleteItem()">Delete</button>
+            <button ng-show="timelineValues.index > 0" class="btn btn-danger btn-lg" ng-click="deleteItem()">
+                  <span class="glyphicon glyphicon-remove"></span>
+            </button>
+      <!-- </div> -->
 </div>
+
  <pipp-timeline-j-s source="data"
                    height="600"
                    width="90%"
@@ -22,5 +30,6 @@
                    lang="en"
                    state="timelineValues"
                    debug="false"></pipp-timeline-j-s>
-</div>
+
+
 </div>

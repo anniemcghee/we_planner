@@ -8,6 +8,8 @@ app.controller('MainNavCtrl',['$scope','$location','$modal','UserService', 'Time
     $scope.currentUser = UserService.currentUser;
   })
 
+  $scope.location = $location.path() === '/'
+
   $scope.isActive = function(url){
     return url == $location.path();
   //location is directly related to ngRoute that we loaded into our app - it helps get the url - or can set it with path('/whatever')

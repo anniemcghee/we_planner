@@ -45,6 +45,8 @@ app.controller('NewTaskModalCtrl', ['$scope','$http','$modalInstance','$routePar
       return $http.get('/tags?query=' + query);
       };
 
+  $scope.userOne = UserService.currentUser.userOne
+  $scope.userTwo = UserService.currentUser.userTwo
 
 
   $scope.addNew = function(){

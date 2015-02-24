@@ -21,12 +21,17 @@
   background: transparent;
 }
 
+.dropdown-toggle {
+  position: absolute;
+}
+
 h1.logo {
   font-family: 'Montserrat', sans-serif;
   color: #19B5BC;
   font-size: 70px;
   font-weight: 100px;
   display: inline;
+  position: absolute;
 }
 
 h2 {
@@ -87,11 +92,14 @@ a:focus {
   padding-top: 0px;
 }
 
-.navbar-nav>li>a {
-padding-top: 30px;
-/* padding-bottom: 15px; */
+.auth-btn {
+  position: relative;
+  margin-top: 30px;
 }
 
+.navbar-right {
+  margin-top: 40px;
+}
 .navbar-default {
   border-bottom: 0px;
 }
