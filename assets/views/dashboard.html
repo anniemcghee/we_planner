@@ -1,10 +1,4 @@
-<div ng-repeat="task in TimelineService.tasks">
-
-</div>
-
-
 <!-- edit timeline  -->
-<button class="btn btn-warning" ng-click="showNew()">+</a></li>
 <!-- <button class="btn btn-warning" ng-click="showEdit()">Edit Tasks</button> -->
 
 
@@ -12,6 +6,7 @@
 <div class="container">
 <div class="row text-centered">
 
+      <button class="btn btn-warning" ng-click="showNew()">+</a></li>
 <div ng-show="timelineValues.index > 0" style="position:absolute; z-index:499; margin: 110px 0 0 170px;">
       <button class="btn btn-warning btn-xs" ng-click="editItem()">Edit</button>
       <button class="btn btn-danger btn-xs" ng-click="deleteItem()">Delete</button>

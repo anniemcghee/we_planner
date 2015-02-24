@@ -4,8 +4,9 @@
 <!-- <alerts></alerts> -->
 <div class="modal-body">
   <div class="row">
+    <form ng-submit="signup()">
     <div class="col-md-6">
-      <form ng-submit="signup()">
+
         <h4><div class="form-group">
           <label>Couple's Last Name</label>
           <input ng-model="lastName" type="text" class="form-control" placeholder="Choose one or hyphenate!">
@@ -33,7 +34,7 @@
           <input ng-model="signupPasswordConfirmation" type="password" class="form-control" required>
         </div></h4>
     </div> <!-- end of column -->
-      <div class="row text-center">
+    <div class="row text-center">
 
           <h4><label>Wedding Date</label>
 
@@ -45,12 +46,8 @@
                 </span>
               </p>
 
-        </div>
-        <hr>
-        <div class="row text-center">
-        <h4><input type="submit" value="Signup" class="btn btn-primary"></h4>
+          <input type="submit" value="Signup" class="btn btn-primary">
+        </form>
       </div>
-      </form>
-    </div>
   </div>
 </div>

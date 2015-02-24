@@ -61,6 +61,19 @@ a {
   padding-top: 0px;
   padding-right: 0px;
   padding-left: 0px;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:focus {
+  text-decoration: none;
+}
+
+.dropdown:hover {
+  background: transparent;
 }
 
 /*PAGE HEADER AND NAVBAR*/
