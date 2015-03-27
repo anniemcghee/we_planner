@@ -11,11 +11,6 @@ app.controller('AuthModalCtrl', ['$scope','$http','$location','$modalInstance','
     $scope.dt = null;
   };
 
-  // Disable weekend selection
-  // $scope.disabled = function(date, mode) {
-  //   return ( mode === 'day' && ( date.getDay() === 0 || date.getDay() === 6 ) );
-  // };
-
   $scope.toggleMin = function() {
     $scope.minDate = $scope.minDate ? null : new Date();
   };
@@ -36,7 +31,7 @@ app.controller('AuthModalCtrl', ['$scope','$http','$location','$modalInstance','
   $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
   $scope.format = $scope.formats[0];
 //END OF DATE PICKER
-//END OF DATE PICKER
+
   $scope.userId = UserService.currentUser.id
 //for the use of signup add wedding task ONLY
 
@@ -61,7 +56,7 @@ app.controller('AuthModalCtrl', ['$scope','$http','$location','$modalInstance','
   }
 
   $scope.signup = function(){
-//need signup to trigger User Service / session too
+// signup triggers User Service / session too
     if ($scope.password != $scope.signupPasswordConfirmation) {
       AlertService.add('danger','Password is not a match.')
       return

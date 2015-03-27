@@ -1,11 +1,5 @@
 app.controller('EditTaskIndexModalCtrl', ['$scope','$http','$modalInstance','AlertService', 'UserService', 'TimelineService','task', function($scope, $http, $modalInstance, AlertService, UserService, TimelineService, task) {
 
-//the settings modal is accessible in the dropdown
-//it will appear after user signup automatically
-  // $scope.task = TimelineService.tasks[$scope.timelineValues.index-1]
-
-  // console.log('From edit task modal, scope.task is:',$scope.task);
-
   $scope.letterLimit = 20
 
   //DATEPICKER INFO
@@ -18,11 +12,6 @@ app.controller('EditTaskIndexModalCtrl', ['$scope','$http','$modalInstance','Ale
   $scope.clear = function () {
     $scope.dt = null;
   };
-
-  // Disable weekend selection
-  // $scope.disabled = function(date, mode) {
-  //   return ( mode === 'day' && ( date.getDay() === 0 || date.getDay() === 6 ) );
-  // };
 
   $scope.toggleMin = function() {
     $scope.minDate = $scope.minDate ? null : new Date();
@@ -55,10 +44,8 @@ app.controller('EditTaskIndexModalCtrl', ['$scope','$http','$modalInstance','Ale
   $scope.dt = task.endDate;
   $scope.tags = task.tag;
   $scope.id = task.id;
-  //need a scope for TASK ID
 
   $scope.editTask = function(){
-    // console.log('Loading this task',$scope.task)
 
     var taskData = {
       id: $scope.id,
@@ -79,6 +66,7 @@ app.controller('EditTaskIndexModalCtrl', ['$scope','$http','$modalInstance','Ale
         alert(err);
       });
   }
+
 
 //    $scope.editTask = function(idx){
 //     alert('edit function')

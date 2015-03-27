@@ -15,13 +15,7 @@ app.controller('MainNavCtrl',['$scope','$location','$modal','UserService', 'Time
   //location is directly related to ngRoute that we loaded into our app - it helps get the url - or can set it with path('/whatever')
   }
 
-  $scope.isActive = function(url){
-    return url == $location.path();
-  //location is directly related to ngRoute that we loaded into our app - it helps get the url - or can set it with path('/whatever')
-  }
-
   $scope.showLogin = function(){
-    // alert('Here comes the modal');
     $modal.open({
       templateUrl:'/views/loginModal.html',
       controller:'AuthModalCtrl'
@@ -29,7 +23,6 @@ app.controller('MainNavCtrl',['$scope','$location','$modal','UserService', 'Time
   };
 
   $scope.showSignup = function(){
-    // alert('Here comes the signup modal');
     $modal.open({
       templateUrl:'/views/signupModal.html',
       controller:'AuthModalCtrl'
@@ -50,6 +43,7 @@ app.controller('MainNavCtrl',['$scope','$location','$modal','UserService', 'Time
 
   };
 
+//SETTINGS MODAL FOR LATER SCALE
   // $scope.showEdit = function(){
   //   $modal.open({
   //     templateUrl:'views/settingsModal.html',

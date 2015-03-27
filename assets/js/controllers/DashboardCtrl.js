@@ -58,8 +58,6 @@ app.controller('DashboardCtrl',['$scope','$http','$modal', 'AlertService','UserS
 
   $scope.$watchCollection('TimelineService.tasks', function(){
 
-// $scope.taco = $scope.timelineValues
-
     $scope.data = {
 
     "timeline":
@@ -91,8 +89,7 @@ app.controller('DashboardCtrl',['$scope','$http','$modal', 'AlertService','UserS
 
     modalInstance.result.then(function (data) {
       TimelineService.add(data);
-      // debugger;
-      // TimelineService.get(function() { $scope.timelineValues = {index: TimelineService.indexOf(data) }})
+
       $scope.timelineValues = {index: TimelineService.indexOf(data) + 1 };
 
       console.log("New Timeline data from main nav", data);
@@ -144,12 +141,9 @@ app.controller('DashboardCtrl',['$scope','$http','$modal', 'AlertService','UserS
         // alert(err);
       });
 
-
-    // $scope.tasks.splice(idx, 1);
-    // $modalInstance.close();
   }
 
-//This is the code to use for the list view
+//FOR SCALE LATER: This is some code to use for the list view
   // $scope.showEdit = function(){
   //   console.log('tl index maybe?',$scope.timelineValues.index-1);
   //   var modalInstance = $modal.open({
